@@ -1,0 +1,16 @@
+browser:
+  browserName: chrome
+environment:
+  test:
+    envName: test
+    active: true
+    url: http://146.59.32.4/index.php
+    definedProduct: hummingbird
+    currency: $
+    minPriceRange: 9
+    maxPriceRange: 10
+    filterTestCategory: art
+  prod:
+    envName: test
+    active: false
+    url: http://146.59.32.4/index.php
