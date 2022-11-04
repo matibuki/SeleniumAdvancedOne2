@@ -1,7 +1,6 @@
 package ProductsTests;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,8 +18,8 @@ public class CategoriesTests extends Pages {
             headerPage.getCategories().get(i).click();
             logger.info("Category entered: " + headerPage.getCategoryName(i));
 
-            softly.assertThat(headerPage.getCategoryName(i)).isEqualTo(categoriesResultsPage.getCategoryHeader().getText());
-            softly.assertThat(categoriesResultsPage.getProductsCount()).isEqualTo(categoriesResultsPage.extractNumberOfProductsFromString());
+            softly.assertThat(headerPage.getCategoryName(i)).isEqualTo(productsPage.getCategoryHeader().getText());
+            softly.assertThat(productsPage.getProductsCount()).isEqualTo(productsPage.extractNumberOfProductsFromString());
             softly.assertAll();
         }
     }

@@ -14,9 +14,9 @@ public class SearchTests extends Pages {
     public void genericSearchTest() {
         headerPage.searchForRandomItemInCatalog();
         headerPage.clickSearch();
-        searchResultsPage.findElementInList(headerPage.randomElementToSearch().getText());
+        productsPage.findElementInList(headerPage.randomElementToSearch().getText());
 
-        softly.assertThat(searchResultsPage.numberOfProductsFound()).isEqualTo(1);
+        softly.assertThat(productsPage.numberOfProductsFound()).isEqualTo(1);
         softly.assertThat(headerPage.randomElementToSearch().getText()).isEqualTo(headerPage.randomElementToSearch().getText());
         softly.assertAll();
     }

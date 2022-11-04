@@ -8,10 +8,10 @@ import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
-public class CategoriesResultsPage extends BasePage {
-    private static Logger logger = LoggerFactory.getLogger(CategoriesResultsPage.class);
+public class ProductsPage extends BasePage {
+    private static Logger logger = LoggerFactory.getLogger(ProductsPage.class);
 
-    public CategoriesResultsPage(WebDriver driver) {
+    public ProductsPage(WebDriver driver) {
         super(driver);
     }
 
@@ -20,6 +20,10 @@ public class CategoriesResultsPage extends BasePage {
 
     @FindBy(css = ".product")
     private List<WebElement> products;
+
+    @FindBy(css = ".product-title")
+    private List<WebElement> availableProducts;
+
 
     @FindBy(css = ".price")
     private List<WebElement> prices;
@@ -54,8 +58,19 @@ public class CategoriesResultsPage extends BasePage {
         return getProducts().size();
     }
 
+    public int numberOfProductsFound() {
+        return availableProducts.size();
+    }
 
+    String searchResult;
 
-
-
+    public String findElementInList(String searchResultElement) {
+        for (WebElement element : availableProducts) {
+            if (element.getText().equals(searchResultElement)) {
+                searchResult = searchResultElement;
+                logger.info("Found element: " + searchResult);
+            }
+        }
+        return searchResult;
+    }
 }

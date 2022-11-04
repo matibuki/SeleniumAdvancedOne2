@@ -1,18 +1,9 @@
 package ProductsTests;
 
-import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.WebElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import pages.CategoriesResultsPage;
-import pages.FilterPage;
-import pages.HeaderPage;
-import pages.ProductPage;
 import start.Pages;
-import start.TestBase;
-
-import java.util.List;
 
 public class FiltersTest extends Pages {
     private static Logger logger = LoggerFactory.getLogger(FiltersTest.class);
@@ -28,12 +19,12 @@ public class FiltersTest extends Pages {
         filterPage.setMinimumPrice(priceRangeMin);
         filterPage.setMaximumPrice(priceRangeMax);
 
-        if (categoriesResultsPage.getProducts().size() > 0) {
-            logger.info("Number of products found: " + categoriesResultsPage.getProducts().size());
-            for (int i=0; i < categoriesResultsPage.getProducts().size(); i++) {
-                logger.info("Product price: " + categoriesResultsPage.getProductPrice(i));
+        if (productsPage.getProducts().size() > 0) {
+            logger.info("Number of products found: " + productsPage.getProducts().size());
+            for (int i = 0; i < productsPage.getProducts().size(); i++) {
+                logger.info("Product price: " + productsPage.getProductPrice(i));
 
-                softly.assertThat(categoriesResultsPage.getProductPrice(i)).isBetween(priceRangeMin,priceRangeMax);
+                softly.assertThat(productsPage.getProductPrice(i)).isBetween(priceRangeMin,priceRangeMax);
                 softly.assertAll();
             }
         } else {

@@ -1,10 +1,11 @@
-package pages;
+package pages.home;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import pages.BasePage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,15 +52,6 @@ public class HeaderPage extends BasePage {
         searchCatalogInput.sendKeys(System.getProperty("definedProduct"));
         waitForElements(dropdownOptions);
     }
-//
-//    public boolean findDefinedProductInList() {
-//        String test = System.getProperty("definedProduct");
-//        for (WebElement element : dropdownOptions) {
-//            if (element.getText().contains(test)) return true;
-//        }
-//        return false;
-//    }
-
     public List<String> productSearchResult() {
         List<String> list = new ArrayList<>();
         for (WebElement element : dropdownOptions) {
