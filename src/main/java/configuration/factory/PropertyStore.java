@@ -1,6 +1,7 @@
 package configuration.factory;
 
 import configuration.models.Browser;
+import configuration.models.Data;
 import configuration.reader.YamlReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,9 +16,12 @@ public class PropertyStore {
     private Browser browser;
     private List<EnvironmentFactory> listOfEnvironments;
 
+    private Data data;
+
     private PropertyStore() {
         setBrowser();
         setEnv();
+        setData();
     }
 
     public static PropertyStore getInstance() {
@@ -49,6 +53,15 @@ public class PropertyStore {
         for (Map.Entry entry : browserProperties.entrySet()) {
             System.setProperty(entry.getKey().toString(), entry.getValue().toString());
             logger.info("Browser loaded");
+        }
+    }
+
+    private void setData() {
+        data = yamlReader.getConfig().getData();
+        Map<String, Object> dataProperties = data.getDataProperties();
+        for (Map.Entry entry : dataProperties.entrySet()) {
+            System.setProperty(entry.getKey().toString(), entry.getValue().toString());
+            logger.info("Test data loaded");
         }
     }
 

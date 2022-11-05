@@ -49,4 +49,12 @@ public class BasePage {
     public Double getPrice(WebElement element) {
         return Double.parseDouble(element.getText().replace(System.getProperty("currency"), ""));
     }
+
+    public void openRegistrationPage() {
+        driver.get(System.getProperty("registrationPage"));
+    }
+
+    public String currentUrl() {
+        return driver.getCurrentUrl();
+    }
 }

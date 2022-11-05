@@ -35,6 +35,9 @@ public class HeaderPage extends BasePage {
     @FindBy(css = ".total-products")
     private WebElement totalProducts;
 
+    @FindBy(css = ".logout")
+    private WebElement signOutBtn;
+
     public WebElement randomElementToSearch() {
         return getRandomElementFromList(availableProducts);
     }
@@ -75,6 +78,11 @@ public class HeaderPage extends BasePage {
                 category.click();
             }
         }
+    }
+
+    public String getLogoutBtn() {
+        waitForElement(signOutBtn);
+        return signOutBtn.getText();
     }
 }
 

@@ -2,6 +2,8 @@ package providers;
 
 import com.github.javafaker.Faker;
 
+import java.text.SimpleDateFormat;
+
 public class DataProvider {
     Faker faker = new Faker();
 
@@ -20,7 +22,8 @@ public class DataProvider {
         return faker.internet().password();
     }
     public String setBirthdate() {
-        return faker.date().birthday(18,60).toString();
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+        return sdf.format(faker.date().birthday(18,60));
     }
 
 }

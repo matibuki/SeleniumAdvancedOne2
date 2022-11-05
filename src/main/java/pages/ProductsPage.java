@@ -28,10 +28,6 @@ public class ProductsPage extends BasePage {
     @FindBy(css = ".price")
     private List<WebElement> prices;
 
-    public WebElement getTotalProductsNumber() {
-        return totalProductsNumber;
-    }
-
     @FindBy(css = ".total-products")
     private WebElement totalProductsNumber;
 
@@ -42,11 +38,25 @@ public class ProductsPage extends BasePage {
     @FindBy(css = "#js-product-list-header h1")
     private WebElement categoryHeader;
 
+    public String getProductListTitle() {
+        return productHeader.getText();
+    }
+
+    @FindBy(css = "#js-product-list-header")
+    private WebElement productHeader;
+
+    public List<WebElement> getDiscountTag() {
+        return discountTag;
+    }
+
+    @FindBy(css = ".product-flag")
+    private List<WebElement> discountTag;
+
     public List<WebElement> getProducts() {
         return products;
     }
 
-    public int extractNumberOfProductsFromString() {
+    public int productsCountInSubtitle() {
         return Integer.parseInt(totalProductsNumber.getText().replaceAll("[^0-9]", ""));
 
     }

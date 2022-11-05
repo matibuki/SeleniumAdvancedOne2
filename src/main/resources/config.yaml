@@ -1,15 +1,21 @@
 browser:
   browserName: chrome
+data:
+  definedProduct: hummingbird
+  currency: $
+  minPriceRange: 9
+  maxPriceRange: 10
+  filterTestCategory: art
+  onSaleHeader: ON SALE
+  registrationPage: http://146.59.32.4/index.php?controller=authentication&create_account=1
+  registeredUserUrl: http://146.59.32.4/index.php
+  signOutText: Sign out
 environment:
   test:
     envName: test
     active: true
     url: http://146.59.32.4/index.php
-    definedProduct: hummingbird
-    currency: $
-    minPriceRange: 9
-    maxPriceRange: 10
-    filterTestCategory: art
+
   prod:
     envName: test
     active: false

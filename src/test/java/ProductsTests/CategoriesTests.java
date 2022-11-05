@@ -19,7 +19,7 @@ public class CategoriesTests extends Pages {
             logger.info("Category entered: " + headerPage.getCategoryName(i));
 
             softly.assertThat(headerPage.getCategoryName(i)).isEqualTo(productsPage.getCategoryHeader().getText());
-            softly.assertThat(productsPage.getProductsCount()).isEqualTo(productsPage.extractNumberOfProductsFromString());
+            softly.assertThat(productsPage.getProductsCount()).isEqualTo(productsPage.productsCountInSubtitle());
             softly.assertAll();
         }
     }

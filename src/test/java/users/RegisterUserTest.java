@@ -1,15 +1,21 @@
 package users;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import start.TestBase;
+import start.Pages;
 
-public class RegisterUserTest extends TestBase {
+
+public class RegisterUserTest extends Pages {
     @Test
-    public void formTest() throws InterruptedException {
+    @DisplayName("Register new user")
+    public void registerUserTest() {
+        basePage.openRegistrationPage();
+        registrationPage.fillRegistrationForm();
+        registrationPage.obligatoryCheckboxes();
+        registrationPage.saveUser();
 
-//        FormPage formPage = new FormPage(driver);
-
-//        formPage.fillFirstName(System.getProperty("firstName"));
-//test coommit
+        softly.assertThat(registrationPage.currentUrl()).isEqualTo(System.getProperty("registeredUserUrl"));
+        softly.assertThat(headerPage.getLogoutBtn()).contains(System.getProperty("signOutText"));
+        softly.assertAll();
     }
 }
