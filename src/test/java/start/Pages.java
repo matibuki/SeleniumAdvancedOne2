@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import pages.*;
 import pages.home.FooterPage;
 import pages.home.HeaderPage;
+import pages.home.TopMenuPage;
 
 public class Pages extends TestBase {
     public BasePage basePage;
@@ -16,6 +17,8 @@ public class Pages extends TestBase {
     public SoftAssertions softly;
     public RegistrationPage registrationPage;
 
+    public TopMenuPage topMenuPage;
+
     @BeforeEach
     public void setupPages() {
         basePage = new BasePage(driver);
@@ -24,6 +27,7 @@ public class Pages extends TestBase {
         headerPage = new HeaderPage(driver);
         footerPage = new FooterPage(driver);
         registrationPage = new RegistrationPage(driver);
+        topMenuPage = new TopMenuPage(driver);
     }
 
     @BeforeEach

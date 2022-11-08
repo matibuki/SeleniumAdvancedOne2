@@ -15,6 +15,10 @@ public class SingleProductPage extends BasePage {
         super(driver);
     }
 
+    @FindBy(css = ".h1")
+    private WebElement productName;
+    @FindBy(css = ".current-price")
+    private WebElement productPrice;
     @FindBy(css = "#quantity-wanted")
     private WebElement quantity;
 

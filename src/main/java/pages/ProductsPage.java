@@ -52,6 +52,9 @@ public class ProductsPage extends BasePage {
     @FindBy(css = ".product-flag")
     private List<WebElement> discountTag;
 
+    @FindBy(linkText = "THE BEST IS YET POSTER")
+    private List<WebElement> thebestisyetPoster;
+
     public List<WebElement> getProducts() {
         return products;
     }
@@ -82,5 +85,9 @@ public class ProductsPage extends BasePage {
             }
         }
         return searchResult;
+    }
+
+    public void openProduct(String productName) {
+
     }
 }

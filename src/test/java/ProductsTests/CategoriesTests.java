@@ -21,6 +21,7 @@ public class CategoriesTests extends Pages {
             softly.assertThat(headerPage.getCategoryName(i)).isEqualTo(productsPage.getCategoryHeader().getText());
             softly.assertThat(productsPage.getProductsCount()).isEqualTo(productsPage.productsCountInSubtitle());
             softly.assertAll();
+
         }
     }
 }

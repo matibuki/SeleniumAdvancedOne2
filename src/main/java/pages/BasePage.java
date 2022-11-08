@@ -1,20 +1,33 @@
 package pages;
 
+import configuration.WebListener;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.interactions.Coordinates;
+import org.openqa.selenium.interactions.Locatable;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.events.internal.EventFiringMouse;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.time.Duration;
 import java.util.List;
 import java.util.Random;
 
 public class BasePage {
+    private static Logger logger = LoggerFactory.getLogger(BasePage.class);
     public WebDriver driver;
     public WebDriverWait wait;
     public Actions actions;
+
+    private EventFiringMouse eventFiringMouse;
+
+    private WebListener webListener = new WebListener();
+
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
@@ -37,8 +50,13 @@ public class BasePage {
     }
 
     public void waitForElement(WebElement element) {
-        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(5)); //todo
         wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
+
+    public void waitForElementToBeVisible(WebElement element) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5)); //todo
+        wait.until(ExpectedConditions.visibilityOf(element));
     }
 
     public void waitForElements(List<WebElement> elements) {
@@ -56,5 +74,29 @@ public class BasePage {
 
     public String currentUrl() {
         return driver.getCurrentUrl();
+    }
+
+    protected void mouseHover(WebElement element) {
+        waitForElementToBeVisible(element);
+        eventFiringMouse = new EventFiringMouse(driver, webListener);
+        Locatable item = (Locatable) element;
+        Coordinates coordinates = item.getCoordinates();
+//        highlightElement(element);
+        eventFiringMouse.mouseMove(coordinates);
+        logger.info("Mouse hover on element" + element.getText());
+
+    }
+
+    protected void highlightElement(WebElement element) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        try {
+            js.executeScript("arguments[0].setAttribute('style', 'background: yellow; border: 4px solid red;');", element);
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+
+
     }
 }

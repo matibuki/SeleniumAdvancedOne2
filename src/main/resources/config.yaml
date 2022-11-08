@@ -1,5 +1,6 @@
 browser:
   browserName: chrome
+  wait: 5
 data:
   definedProduct: hummingbird
   currency: $

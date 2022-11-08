@@ -38,6 +38,8 @@ public class HeaderPage extends BasePage {
     @FindBy(css = ".logout")
     private WebElement signOutBtn;
 
+
+
     public WebElement randomElementToSearch() {
         return getRandomElementFromList(availableProducts);
     }
