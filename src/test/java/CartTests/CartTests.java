@@ -1,6 +1,6 @@
 package CartTests;
 
-import ProductsTests.CategoriesTests;
+import models.Product;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -15,7 +15,17 @@ public class CartTests extends Pages {
     @DisplayName("Verify number of products in categories display")
     public void cartPopup() {
         headerPage.enterCategoryByName("ART");
-        productsPage.openProduct("THE BEST IS YET POSTER");
+        productsPage.openBestPoster();
+        singleProductPage.setProductQuantity("3");
+        singleProductPage.addProductToCart();
+
+        for (Product product : cart) {
+
+        }
+
+        softly.assertThat(productDialogPage.getProductName()).isEqualTo(product.get);
+        softly.assertThat(productDialogPage.getProductPrice()).isEqualTo();
+        softly.assertThat(basePage.productsCountInString(productDialogPage.getProductCountString())).isEqualTo();
     }
 
 }

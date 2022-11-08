@@ -95,8 +95,9 @@ public class BasePage {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+    }
 
-
-
+    public int productsCountInString(WebElement element) {
+        return Integer.parseInt(element.getText().replaceAll("[^0-9]", ""));
     }
 }

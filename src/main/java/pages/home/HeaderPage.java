@@ -38,8 +38,6 @@ public class HeaderPage extends BasePage {
     @FindBy(css = ".logout")
     private WebElement signOutBtn;
 
-
-
     public WebElement randomElementToSearch() {
         return getRandomElementFromList(availableProducts);
     }
@@ -57,6 +55,7 @@ public class HeaderPage extends BasePage {
         searchCatalogInput.sendKeys(System.getProperty("definedProduct"));
         waitForElements(dropdownOptions);
     }
+
     public List<String> productSearchResult() {
         List<String> list = new ArrayList<>();
         for (WebElement element : dropdownOptions) {

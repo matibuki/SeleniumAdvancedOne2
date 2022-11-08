@@ -29,9 +29,14 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public Product(String productName, String productPrice, double quantity) {
+    public Product(String productName, String productPrice, int quantity) {
         this.productName = productName;
         this.productPrice = productPrice;
         this.quantity = quantity;
+    }
+
+    @Override
+    public String toString() {
+        return ("Product: " + productName + " price: " + productPrice + " quantity: " + quantity);
     }
 }

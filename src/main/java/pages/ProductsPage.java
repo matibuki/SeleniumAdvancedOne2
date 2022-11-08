@@ -53,7 +53,7 @@ public class ProductsPage extends BasePage {
     private List<WebElement> discountTag;
 
     @FindBy(linkText = "THE BEST IS YET POSTER")
-    private List<WebElement> thebestisyetPoster;
+    private WebElement thebestisyetPoster;
 
     public List<WebElement> getProducts() {
         return products;
@@ -61,7 +61,6 @@ public class ProductsPage extends BasePage {
 
     public int productsCountInSubtitle() {
         return Integer.parseInt(totalProductsNumber.getText().replaceAll("[^0-9]", ""));
-
     }
     public double getProductPrice(int i) {
         return getPrice(prices.get(i));
@@ -87,7 +86,8 @@ public class ProductsPage extends BasePage {
         return searchResult;
     }
 
-    public void openProduct(String productName) {
+    public void openBestPoster() {
+        thebestisyetPoster.click();
 
     }
 }

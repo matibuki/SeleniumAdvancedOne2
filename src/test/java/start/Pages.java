@@ -12,12 +12,12 @@ public class Pages extends TestBase {
     public ProductsPage productsPage;
     public FilterPage filterPage;
     public HeaderPage headerPage;
-
     public FooterPage footerPage;
     public SoftAssertions softly;
     public RegistrationPage registrationPage;
-
     public TopMenuPage topMenuPage;
+    public SingleProductPage singleProductPage;
+    public ProductDialogPage productDialogPage;
 
     @BeforeEach
     public void setupPages() {
@@ -28,6 +28,8 @@ public class Pages extends TestBase {
         footerPage = new FooterPage(driver);
         registrationPage = new RegistrationPage(driver);
         topMenuPage = new TopMenuPage(driver);
+        singleProductPage = new SingleProductPage(driver);
+        productDialogPage = new ProductDialogPage(driver);
     }
 
     @BeforeEach
