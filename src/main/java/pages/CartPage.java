@@ -46,8 +46,9 @@ public class CartPage extends BasePage {
     }
 
     public Cart toCart() {
+        productsInCartList = new ArrayList<>();
+        Cart websiteCart = new Cart();
         for (int i = 0; i < cartRows.size(); i++) {
-            this.productsInCartList = new ArrayList<>();
             String name = productsNames.get(i).getText();
             logger.info("Found product in cart page " + name);
             String price = productsPrices.get(i).getText();
@@ -57,7 +58,7 @@ public class CartPage extends BasePage {
             Product product = new Product(name, price, quantity);
             productsInCartList.add(product);
         }
-        return new Cart();
+        return websiteCart;
     }
 
     public List<Product> getProductsInCartList() {
