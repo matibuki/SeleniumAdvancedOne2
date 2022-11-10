@@ -45,6 +45,10 @@ public class CartTests extends Pages {
             productDialogPage.continueShopping();
         }
         headerPage.openCartPage();
-        assertThat(expectedCart).usingRecursiveComparison().isEqualTo(cartPage.toCart());
+        Cart newCart = new Cart();
+        for (int i=0; i < cartPage.getCartRows().size(); i++) {
+            newCart.addProduct(cartPage.productInCart(i));
+        }
+        assertThat(expectedCart).usingRecursiveComparison().isEqualTo(newCart);
     }
 }

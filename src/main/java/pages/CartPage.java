@@ -33,8 +33,6 @@ public class CartPage extends BasePage {
     @FindBy(css = ".remove-from-cart")
     private WebElement trashIcon;
 
-
-
     @FindBy(css = ".cart-item")
     private List<WebElement> cartRows;
 
@@ -46,7 +44,6 @@ public class CartPage extends BasePage {
     }
 
     public Cart toCart() {
-        productsInCartList = new ArrayList<>();
         Cart websiteCart = new Cart();
         for (int i = 0; i < cartRows.size(); i++) {
             String name = productsNames.get(i).getText();
@@ -56,14 +53,25 @@ public class CartPage extends BasePage {
             int quantity = Integer.parseInt(productsQuantities.get(i).getAttribute("value"));
             logger.info(String.valueOf(quantity));
             Product product = new Product(name, price, quantity);
-            productsInCartList.add(product);
+//            productsInCartList.add(product);
         }
-        return websiteCart;
+        return new Cart();
+    }
+
+    public Product productInCart(int i) {
+        String name = productsNames.get(i).getText();
+        logger.info("Found product in cart page " + name);
+        String price = productsPrices.get(i).getText();
+        logger.info(price);
+        int quantity = Integer.parseInt(productsQuantities.get(i).getAttribute("value"));
+        logger.info(String.valueOf(quantity));
+        return new Product(name, price, quantity);
     }
 
     public List<Product> getProductsInCartList() {
         return productsInCartList;
     }
+
     public List<WebElement> getCartRows() {
         return cartRows;
     }

@@ -11,7 +11,7 @@ data:
   registrationPage: http://146.59.32.4/index.php?controller=authentication&create_account=1
   registeredUserUrl: http://146.59.32.4/index.php
   signOutText: Sign out
-  numberOfCalculationRuns: 3
+  numberOfCalculationRuns: 15
 environment:
   test:
     envName: test
