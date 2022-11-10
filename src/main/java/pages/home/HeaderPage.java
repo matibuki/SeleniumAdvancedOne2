@@ -1,11 +1,13 @@
 package pages.home;
 
+import models.Cart;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pages.BasePage;
+import pages.CartPage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -91,6 +93,8 @@ public class HeaderPage extends BasePage {
 
     public void openCartPage() {
         cartBtn.click();
+        CartPage cartPage = new CartPage(driver);
+        waitForElements(cartPage.getCartRows());
     }
 }
 

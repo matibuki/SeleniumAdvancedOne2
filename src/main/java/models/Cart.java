@@ -29,14 +29,11 @@ public class Cart {
         if (isProductAlreadyInCart(products, newProduct)) {
             for (Product product : products) {
                 if (product.getProductName().equals(newProduct.getProductName())) {
-                    logger.info("Old quantity:" + product.getQuantity() + "___" + "New quantity: " + newProduct.getQuantity());
+                    logger.info("Old quantity:" + product.getQuantity() + " ___ " + "New quantity: " + newProduct.getQuantity());
                     product.setQuantity(product.getQuantity() + newProduct.getQuantity());
-                    logger.info("Probably new quantity: " + product.getQuantity());
-
+                    logger.info("New quantity: " + product.getQuantity());
+                    logger.info("Increased quantity in cart, cart size: " + products.size());
                 }
-//            products.add(newProduct);
-                logger.info("Increased quantity in cart, cart size: " + products.size());
-                logger.info("Again new quantity?" + newProduct.getQuantity());
 //            totalOrderCost = getTotalOrderCost();
             }
         } else {
@@ -51,7 +48,6 @@ public class Cart {
             if (prod.getProductName().equals(product.getProductName())) {
                 return true;
             }
-            return false;
         }
         return false;
     }

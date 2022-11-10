@@ -8,6 +8,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import start.Pages;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+
 public class CartTests extends Pages {
     private static Logger logger = LoggerFactory.getLogger(CartTests.class);
 
@@ -43,7 +45,6 @@ public class CartTests extends Pages {
             productDialogPage.continueShopping();
         }
         headerPage.openCartPage();
-        logger.info("Cart size in cart page: "); //todo
-
+        assertThat(expectedCart).usingRecursiveComparison().isEqualTo(cartPage.toCart());
     }
 }
