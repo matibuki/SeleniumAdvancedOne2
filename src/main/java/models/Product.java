@@ -3,7 +3,7 @@ package models;
 public class Product {
     private String productName;
     private String productPrice;
-    private String quantity;
+    private int quantity;
 
     public String getProductName() {
         return productName;
@@ -21,15 +21,15 @@ public class Product {
         this.productPrice = productPrice;
     }
 
-    public String getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(String quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
-    public Product(String productName, String productPrice, String quantity) {
+    public Product(String productName, String productPrice, int quantity) {
         this.productName = productName;
         this.productPrice = productPrice;
         this.quantity = quantity;

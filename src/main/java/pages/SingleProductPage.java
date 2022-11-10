@@ -45,8 +45,8 @@ public class SingleProductPage extends BasePage {
         logger.info(newProductName);
         String newProductPrice = this.productPrice.getText();
         logger.info(newProductPrice);
-        String newProductQuantity = this.quantity.getAttribute("value");
-        logger.info(newProductQuantity);
+        int newProductQuantity = Integer.parseInt(this.quantity.getAttribute("value"));
+        logger.info(String.valueOf(newProductQuantity));
 
         logger.info("New product created " + newProductName + "----" + newProductPrice + "----" + newProductQuantity);
 //        Product product = new Product(newProductName, newProductPrice, newProductQuantity);

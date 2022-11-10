@@ -2,7 +2,6 @@ package models;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import pages.home.FooterPage;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -57,7 +56,3 @@ public class Cart {
         return false;
     }
 }
-
-//    public boolean checkIfCartHasProduct(Product product) {
-//        return products.contains(product);
-//    }
