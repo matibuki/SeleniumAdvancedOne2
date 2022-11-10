@@ -1,12 +1,12 @@
 package start;
 
-import models.Cart;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.BeforeEach;
 import pages.*;
 import pages.home.FooterPage;
 import pages.home.HeaderPage;
 import pages.home.TopMenuPage;
+import pages.userHandling.RegistrationPage;
 
 public class Pages extends TestBase {
     public BasePage basePage;

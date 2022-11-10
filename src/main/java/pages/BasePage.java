@@ -106,4 +106,8 @@ public class BasePage {
     public void openHomepage() {
         driver.get("http://146.59.32.4/index.php");
     }
+
+    public void loginPredefinedUser() {
+
+    }
 }

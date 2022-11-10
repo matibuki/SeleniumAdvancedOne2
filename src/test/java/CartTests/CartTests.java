@@ -45,10 +45,12 @@ public class CartTests extends Pages {
             productDialogPage.continueShopping();
         }
         headerPage.openCartPage();
-        Cart newCart = new Cart();
-        for (int i=0; i < cartPage.getCartRows().size(); i++) {
-            newCart.addProduct(cartPage.productInCart(i));
-        }
-        assertThat(expectedCart).usingRecursiveComparison().isEqualTo(newCart);
+        assertThat(expectedCart).usingRecursiveComparison().isEqualTo(cartPage.toCart());
+    }
+
+    @Test
+    public void checkoutTest() {
+        basePage.loginPredefinedUser();
+
     }
 }
