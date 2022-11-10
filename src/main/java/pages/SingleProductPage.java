@@ -7,8 +7,6 @@ import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.List;
-
 public class SingleProductPage extends BasePage {
     private static Logger logger = LoggerFactory.getLogger(SingleProductPage.class);
 
@@ -18,9 +16,9 @@ public class SingleProductPage extends BasePage {
 
     @FindBy(css = ".h1")
     private WebElement productName;
-    @FindBy(css = ".current-price")
+    @FindBy(xpath = "//span[@itemprop='price']")
     private WebElement productPrice;
-    @FindBy(css = "#quantity-wanted")
+    @FindBy(css = "#quantity_wanted")
     private WebElement quantity;
 
     @FindBy(css = ".btn.btn-primary.add-to-cart")
@@ -35,19 +33,25 @@ public class SingleProductPage extends BasePage {
         this.quantity.sendKeys(quantity);
     }
 
-    public Product newProductBuilder() {
-        String productName = this.productName.getText();
-        String productPrice = this.productPrice.getText();
-        String productQuantity = this.quantity.getText();
-
-        logger.info("New product created" + productName + productPrice + productQuantity);
-        Product product = new Product(productName, productPrice, Integer.parseInt(productQuantity));
-        logger.info(product.toString());
-        return product;
-//        return new Product(productName, productPrice, Integer.parseInt(productQuantity));
-
+    public void setRandomProductQuantity(int randomStart, int randomEnd) {
+        waitForElement(quantity);
+        String number = String.valueOf(random.nextInt(randomStart, randomEnd));
+        this.quantity.clear();
+        this.quantity.sendKeys(number);
     }
 
+    public Product newProductBuilder() {
+        String newProductName = this.productName.getText();
+        logger.info(newProductName);
+        String newProductPrice = this.productPrice.getText();
+        logger.info(newProductPrice);
+        String newProductQuantity = this.quantity.getAttribute("value");
+        logger.info(newProductQuantity);
 
-
+        logger.info("New product created " + newProductName + "----" + newProductPrice + "----" + newProductQuantity);
+//        Product product = new Product(newProductName, newProductPrice, newProductQuantity);
+//        logger.info(product.toString());
+//        return product;
+        return new Product(newProductName, newProductPrice, newProductQuantity);
+    }
 }

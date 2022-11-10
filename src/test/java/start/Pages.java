@@ -1,5 +1,6 @@
 package start;
 
+import models.Cart;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.BeforeEach;
 import pages.*;
@@ -18,6 +19,7 @@ public class Pages extends TestBase {
     public TopMenuPage topMenuPage;
     public SingleProductPage singleProductPage;
     public ProductDialogPage productDialogPage;
+    public CartPage cartPage;
 
     @BeforeEach
     public void setupPages() {
@@ -30,6 +32,7 @@ public class Pages extends TestBase {
         topMenuPage = new TopMenuPage(driver);
         singleProductPage = new SingleProductPage(driver);
         productDialogPage = new ProductDialogPage(driver);
+        cartPage = new CartPage(driver);
     }
 
     @BeforeEach

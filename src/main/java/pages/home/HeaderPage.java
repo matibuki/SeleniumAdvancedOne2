@@ -38,6 +38,9 @@ public class HeaderPage extends BasePage {
     @FindBy(css = ".logout")
     private WebElement signOutBtn;
 
+    @FindBy(css = ".blockcart")
+    private WebElement cartBtn;
+
     public WebElement randomElementToSearch() {
         return getRandomElementFromList(availableProducts);
     }
@@ -84,6 +87,10 @@ public class HeaderPage extends BasePage {
     public String getLogoutBtn() {
         waitForElement(signOutBtn);
         return signOutBtn.getText();
+    }
+
+    public void openCartPage() {
+        cartBtn.click();
     }
 }
 

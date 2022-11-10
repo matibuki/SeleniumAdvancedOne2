@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ProductDialogPage extends BasePage{
+public class ProductDialogPage extends BasePage {
     private static Logger logger = LoggerFactory.getLogger(ProductDialogPage.class);
 
     public ProductDialogPage(WebDriver driver) {
@@ -22,6 +22,15 @@ public class ProductDialogPage extends BasePage{
     @FindBy(css = ".divide-right .col-md-6 .product-price")
     private WebElement productPrice;
 
+    @FindBy(css = ".product-total .value")
+    private WebElement totalPrice;
+
+    @FindBy(css = ".cart-content-btn .btn-secondary")
+    private WebElement continueShoppingBtn;
+
+
+    @FindBy(css = "    .cart-content-btn .btn-primary")
+    private WebElement goToCheckoutBtn;
 
     public WebElement getProductCountString() {
         return productCountString;
@@ -33,5 +42,26 @@ public class ProductDialogPage extends BasePage{
 
     public WebElement getProductPrice() {
         return productPrice;
+    }
+
+    public WebElement getTotalPrice() {
+        return totalPrice;
+    }
+
+    public WebElement getContinueShoppingBtn() {
+        return continueShoppingBtn;
+    }
+
+    public WebElement getGoToCheckoutBtn() {
+        return goToCheckoutBtn;
+    }
+
+    public void continueShopping() {
+        waitForElement(continueShoppingBtn);
+        continueShoppingBtn.click();
+        logger.info("Back to page");
+    }
+    public void gotoCheckout() {
+        goToCheckoutBtn.click();
     }
 }

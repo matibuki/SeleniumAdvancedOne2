@@ -14,6 +14,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.math.BigDecimal;
 import java.time.Duration;
 import java.util.List;
 import java.util.Random;
@@ -68,6 +69,7 @@ public class BasePage {
         return Double.parseDouble(element.getText().replace(System.getProperty("currency"), ""));
     }
 
+
     public void openRegistrationPage() {
         driver.get(System.getProperty("registrationPage"));
     }
@@ -99,5 +101,9 @@ public class BasePage {
 
     public int productsCountInString(WebElement element) {
         return Integer.parseInt(element.getText().replaceAll("[^0-9]", ""));
+    }
+
+    public void openHomepage() {
+        driver.get("http://146.59.32.4/index.php");
     }
 }

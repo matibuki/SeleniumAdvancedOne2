@@ -59,13 +59,15 @@ public class RegistrationPage extends BasePage {
         birthdayInput.sendKeys(provider.setBirthdate());
     }
 
+    public void obligatoryCheckboxes() {
+        customerPrivacyCheckbox.click();
+        warunkiUzytkowania.click();
+    }
+
     public void saveUser() {
         submitBtn.click();
         logger.info("User saved!");
     }
 
-    public void obligatoryCheckboxes() {
-        customerPrivacyCheckbox.click();
-        warunkiUzytkowania.click();
-    }
+
 }

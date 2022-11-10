@@ -88,6 +88,9 @@ public class ProductsPage extends BasePage {
 
     public void openBestPoster() {
         thebestisyetPoster.click();
+    }
 
+    public void openRandomProductFromHomePage() {
+        availableProducts.get(random.nextInt(availableProducts.size())).click();
     }
 }

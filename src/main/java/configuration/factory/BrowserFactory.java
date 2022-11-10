@@ -23,6 +23,7 @@ public class BrowserFactory {
             case "chrome":
                 ChromeOptions optionsChrome = new ChromeOptions();
                 WebDriverManager.chromedriver().setup();
+                optionsChrome.addArguments("window-position=2500,0");
                 optionsChrome.addArguments("start-maximized");
                 driver = new ChromeDriver(optionsChrome);
                 logger.info("CHROME driver loaded");
