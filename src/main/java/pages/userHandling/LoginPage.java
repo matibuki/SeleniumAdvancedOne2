@@ -17,5 +17,9 @@ public class LoginPage extends BasePage {
     }
 
     @FindBy(css = ".custom-radio")
-    private List<WebElement> socialTitleRadioButtons;
+    private List<WebElement> emailInput;
+    @FindBy(css = ".js-visible-password")
+    private List<WebElement> passwordInput;
+    @FindBy(css = "#submit-login")
+    private List<WebElement> signInBtn;
 }

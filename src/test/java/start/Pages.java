@@ -6,6 +6,7 @@ import pages.*;
 import pages.home.FooterPage;
 import pages.home.HeaderPage;
 import pages.home.TopMenuPage;
+import pages.userHandling.LoginPage;
 import pages.userHandling.RegistrationPage;
 
 public class Pages extends TestBase {
@@ -20,6 +21,7 @@ public class Pages extends TestBase {
     public SingleProductPage singleProductPage;
     public ProductDialogPage productDialogPage;
     public CartPage cartPage;
+    public LoginPage loginPage;
 
     @BeforeEach
     public void setupPages() {
@@ -33,6 +35,7 @@ public class Pages extends TestBase {
         singleProductPage = new SingleProductPage(driver);
         productDialogPage = new ProductDialogPage(driver);
         cartPage = new CartPage(driver);
+        loginPage = new LoginPage(driver);
     }
 
     @BeforeEach

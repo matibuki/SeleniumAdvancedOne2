@@ -36,6 +36,16 @@ public class CartPage extends BasePage {
     @FindBy(css = ".cart-item")
     private List<WebElement> cartRows;
 
+    @FindBy(css = ".cart-total .value")
+    private WebElement totalValueInCart;
+
+    @FindBy(css = "#cart-subtotal-shipping .value")
+    private WebElement shippingCost;
+
+    BasePage basePage = new BasePage(driver);
+
+
+
     public void removeProductFromCart() {
         trashIcon.click();
         logger.info("Product removed from cart");
@@ -56,6 +66,15 @@ public class CartPage extends BasePage {
     }
     public List<WebElement> getCartRows() {
         return cartRows;
+    }
+    public double getTotalValueInCart() {
+        logger.info("Value in cart: " + String.valueOf(totalValueInCart.getText()));
+        return basePage.getPrice(totalValueInCart);
+
+    }
+
+    public double getShippingCost() {
+        return basePage.getPrice(shippingCost);
     }
 }
 

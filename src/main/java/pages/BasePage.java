@@ -40,7 +40,7 @@ public class BasePage {
     public void clickElement (WebElement element) {
         element.click();
     }
-    Random random = new Random();
+    public Random random = new Random();
 
     public WebElement getRandomElementFromList(List<WebElement> list) {
             return list.get(random.nextInt(list.size()));

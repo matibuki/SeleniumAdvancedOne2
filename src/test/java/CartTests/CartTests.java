@@ -45,12 +45,15 @@ public class CartTests extends Pages {
             productDialogPage.continueShopping();
         }
         headerPage.openCartPage();
-        assertThat(expectedCart).usingRecursiveComparison().isEqualTo(cartPage.toCart());
+        softly.assertThat(expectedCart).usingRecursiveComparison().isEqualTo(cartPage.toCart());
+        softly.assertThat(cartPage.getTotalValueInCart()).isEqualTo(expectedCart.getTotalOrderCost()+cartPage.getShippingCost());
+        softly.assertAll();
     }
 
     @Test
     public void checkoutTest() {
-        basePage.loginPredefinedUser();
+
+        loginPage.loginPredefinedUser();
 
     }
 }
