@@ -78,8 +78,9 @@ public class HeaderPage extends BasePage {
     }
 
     public void enterCategoryByName(String name) {
+        waitForElements(categories);
         for (WebElement category : categories) {
-            if (category.getText().toLowerCase().equals(name)) {
+            if (category.getText().equals(name)) {
                 logger.info("Category chosen= " + category.getText());
                 category.click();
             }

@@ -12,6 +12,8 @@ import org.openqa.selenium.ie.InternetExplorerOptions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Arrays;
+
 public class BrowserFactory {
     static Logger logger = LoggerFactory.getLogger(BrowserFactory.class);
     private String browserName;
@@ -23,7 +25,9 @@ public class BrowserFactory {
             case "chrome":
                 ChromeOptions optionsChrome = new ChromeOptions();
                 WebDriverManager.chromedriver().setup();
-                optionsChrome.addArguments("window-position=2500,0");
+//                optionsChrome.addArguments("window-position=2500,0"); // open in right window
+                optionsChrome.addArguments("password-store=basic");
+                optionsChrome.setExperimentalOption("excludeSwitches", Arrays.asList("disable-popup-blocking"));
                 optionsChrome.addArguments("start-maximized");
                 driver = new ChromeDriver(optionsChrome);
                 logger.info("CHROME driver loaded");

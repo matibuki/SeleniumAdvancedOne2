@@ -6,8 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pages.BasePage;
-
-import java.util.List;
+import pages.home.HeaderPage;
 
 public class LoginPage extends BasePage {
     private static Logger logger = LoggerFactory.getLogger(LoginPage.class);
@@ -16,10 +15,20 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
-    @FindBy(css = ".custom-radio")
-    private List<WebElement> emailInput;
+    @FindBy(xpath = "//input[@name='email']")
+    private WebElement emailInput;
     @FindBy(css = ".js-visible-password")
-    private List<WebElement> passwordInput;
+    private WebElement passwordInput;
     @FindBy(css = "#submit-login")
-    private List<WebElement> signInBtn;
+    private WebElement signInBtn;
+
+    public void loginPredefinedUser() {
+        driver.get(System.getProperty("login_url"));
+        waitForElement(emailInput);
+        emailInput.sendKeys(System.getProperty("user_email"));
+        passwordInput.sendKeys(System.getProperty("user_password"));
+        signInBtn.click();
+        HeaderPage headerPage = new HeaderPage(driver);
+        waitForElements(headerPage.getCategories());
+    }
 }

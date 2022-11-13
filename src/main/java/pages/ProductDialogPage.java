@@ -1,5 +1,6 @@
 package pages;
 
+import models.Product;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -21,6 +22,11 @@ public class ProductDialogPage extends BasePage {
 
     @FindBy(css = ".divide-right .col-md-6 .product-price")
     private WebElement productPrice;
+
+
+
+    @FindBy(css = ".col-md-5 .col-md-6 .product-quantity")
+    private WebElement productQuantity;
 
     @FindBy(css = ".product-total .value")
     private WebElement totalPrice;
@@ -44,6 +50,10 @@ public class ProductDialogPage extends BasePage {
         return productPrice;
     }
 
+    public int getProductQuantityString() {
+        return Integer.parseInt(productQuantity.getText().replaceAll("[a-zA-Z\\s:]", ""));
+    }
+
     public WebElement getTotalPrice() {
         return totalPrice;
     }
@@ -62,6 +72,11 @@ public class ProductDialogPage extends BasePage {
         logger.info("Back to page");
     }
     public void gotoCheckout() {
+        waitForElement(goToCheckoutBtn);
         goToCheckoutBtn.click();
+    }
+
+    public Product productInDialog() {
+        return new Product(productName.getText(), productPrice.getText(), getProductQuantityString());
     }
 }

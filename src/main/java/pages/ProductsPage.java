@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -52,8 +53,8 @@ public class ProductsPage extends BasePage {
     @FindBy(css = ".product-flag")
     private List<WebElement> discountTag;
 
-    @FindBy(linkText = "THE BEST IS YET POSTER")
-    private WebElement thebestisyetPoster;
+//    @FindBy(linkText = "THE BEST IS YET POSTER")
+//    private WebElement thebestisyetPoster;
 
     public List<WebElement> getProducts() {
         return products;
@@ -86,8 +87,9 @@ public class ProductsPage extends BasePage {
         return searchResult;
     }
 
-    public void openBestPoster() {
-        thebestisyetPoster.click();
+    public void openProductByName(String name) {
+        waitForElements(availableProducts);
+        driver.findElement(By.linkText(name)).click();
     }
 
     public void openRandomProductFromHomePage() {

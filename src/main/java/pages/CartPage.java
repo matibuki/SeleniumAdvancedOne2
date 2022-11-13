@@ -42,6 +42,10 @@ public class CartPage extends BasePage {
     @FindBy(css = "#cart-subtotal-shipping .value")
     private WebElement shippingCost;
 
+    @FindBy(css = ".checkout .btn-primary")
+    private WebElement goToCheckoutBtn;
+
+
     BasePage basePage = new BasePage(driver);
 
 
@@ -76,6 +80,16 @@ public class CartPage extends BasePage {
     public double getShippingCost() {
         return basePage.getPrice(shippingCost);
     }
+
+    public void goToCheckout() {
+        waitForElement(goToCheckoutBtn);
+        goToCheckoutBtn.click();
+
+    }
+
+//    public String singleProduct(List<Product> list){
+//        return list.get(0).toString();
+//    }
 }
 
 

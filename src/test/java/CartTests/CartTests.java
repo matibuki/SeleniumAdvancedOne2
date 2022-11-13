@@ -1,36 +1,30 @@
 package CartTests;
 
 import models.Cart;
-import models.Product;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import start.Pages;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-
 public class CartTests extends Pages {
     private static Logger logger = LoggerFactory.getLogger(CartTests.class);
 
     //        @RepeatedTest(10)
     @Test
-    @DisplayName("Verify number of products in categories display")
+    @DisplayName("Add product to cart and compare with cart")
     public void cartPopupTest() {
-//        headerPage.enterCategoryByName("ART");
-//        productsPage.openBestPoster();
-//        singleProductPage.setProductQuantity("3");
-//        singleProductPage.addProductToCart();
-//
-//        for (Product product : cart) {
-//
-//        }
-//
-//        softly.assertThat(productDialogPage.getProductName()).isEqualTo(product.get);
-//        softly.assertThat(productDialogPage.getProductPrice()).isEqualTo();
-//        softly.assertThat(basePage.productsCountInString(productDialogPage.getProductCountString())).isEqualTo();
-//    }
+        headerPage.enterCategoryByName(System.getProperty("basket_categoryname"));
+        productsPage.openProductByName(System.getProperty("basket_productname"));
+        singleProductPage.setProductQuantity(System.getProperty("basket_quantity"));
+        Cart expectedCart = new Cart();
+        expectedCart.addProduct(singleProductPage.newProductBuilder());
+        singleProductPage.addProductToCart();
 
+        softly.assertThat(expectedCart.getProducts().get(0).getProductName()).isEqualTo(productDialogPage.productInDialog().getProductName());
+        softly.assertThat(expectedCart.getProducts().get(0).getProductPrice()).isEqualTo(productDialogPage.productInDialog().getProductPrice());
+        softly.assertThat(expectedCart.getProducts().get(0).getProductQuantity()).isEqualTo(productDialogPage.productInDialog().getProductQuantity());
+        softly.assertAll();
     }
 
     @Test
@@ -46,14 +40,36 @@ public class CartTests extends Pages {
         }
         headerPage.openCartPage();
         softly.assertThat(expectedCart).usingRecursiveComparison().isEqualTo(cartPage.toCart());
-        softly.assertThat(cartPage.getTotalValueInCart()).isEqualTo(expectedCart.getTotalOrderCost()+cartPage.getShippingCost());
+        softly.assertThat(cartPage.getTotalValueInCart()).isEqualTo(expectedCart.getTotalOrderCost() + cartPage.getShippingCost());
         softly.assertAll();
     }
 
     @Test
     public void checkoutTest() {
-
         loginPage.loginPredefinedUser();
+        headerPage.enterCategoryByName(System.getProperty("basket_categoryname"));
+        productsPage.openProductByName(System.getProperty("basket_productname"));
+        singleProductPage.addProductToCart();
+        productDialogPage.gotoCheckout();
+        String totalOrderValue = String.valueOf(cartPage.getTotalValueInCart());
+        cartPage.goToCheckout();
+
+        checkoutPage.changeBillingAddress();
+        checkoutPage.fillDifferentAddress();
+        checkoutPage.chooseRandomShippingMethod();
+        checkoutPage.payByCheck();
+        checkoutPage.acceptTermsAndConditions();
+        checkoutPage.placeOrder();
+
+        String orderNumber = orderConfirmationPage.getOrderReference();
+        accountHomePage.openOrderHistory();
+        orderHistoryPage.findOrder(orderNumber);
+
+        softly.assertThat(orderDetailsPage.getOrderDate()).isEqualTo(orderDetailsPage.returnTodayDate());
+        softly.assertThat(orderDetailsPage.getOrderTotalCost()).isEqualTo(System.getProperty("currency") + totalOrderValue);
+        softly.assertThat(orderDetailsPage.getOrderBillingAddress()).isEqualTo(checkoutPage.billingAddress());
+        softly.assertThat(orderDetailsPage.getAddress()).isEqualTo(checkoutPage.getAddress());
+        softly.assertThat(orderDetailsPage.getOrderPaymentStatus()).isEqualTo(System.getProperty("payment_status"));
 
     }
 }

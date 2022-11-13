@@ -10,8 +10,22 @@ data:
   onSaleHeader: ON SALE
   registrationPage: http://146.59.32.4/index.php?controller=authentication&create_account=1
   registeredUserUrl: http://146.59.32.4/index.php
+  login_url: http://146.59.32.4/index.php?controller=authentication&back=my-account
+  basket_categoryname: ART
+  basket_productname: THE BEST IS YET POSTER
+  basket_quantity: 3
   signOutText: Sign out
   numberOfCalculationRuns: 5
+  user_email: mbukowski2@sii.pl
+  user_password: testersii
+  account_name: Mateusz B
+  account_company: SII
+  account_address: Szeligowskiego
+  account_postcode: 22-333
+  account_city: Lublin
+  account_country: Poland
+  account_number: 132313214
+  payment_status: Awaiting check payment
 environment:
   test:
     envName: test

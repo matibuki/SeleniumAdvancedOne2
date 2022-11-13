@@ -49,9 +49,6 @@ public class SingleProductPage extends BasePage {
         logger.info(String.valueOf(newProductQuantity));
 
         logger.info("New product created " + newProductName + "----" + newProductPrice + "----" + newProductQuantity);
-//        Product product = new Product(newProductName, newProductPrice, newProductQuantity);
-//        logger.info(product.toString());
-//        return product;
         return new Product(newProductName, newProductPrice, newProductQuantity);
     }
 }

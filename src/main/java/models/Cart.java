@@ -1,12 +1,8 @@
 package models;
 
-import configuration.factory.BrowserFactory;
-import org.openqa.selenium.WebElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import pages.BasePage;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,14 +30,14 @@ public class Cart {
     public void addProduct(Product newProduct) {
         logger.info("Current cart size: " + products.size());
         logger.info("Current total order cost: " + totalOrderCost);
-        totalOrderCost = totalOrderCost + (newProduct.getQuantity() * getPrice(newProduct.getProductPrice()));
+        totalOrderCost = totalOrderCost + (newProduct.getProductQuantity() * getPrice(newProduct.getProductPrice()));
         logger.info("New total order cost: " + totalOrderCost);
         if (isProductAlreadyInCart(products, newProduct)) {
             for (Product product : products) {
                 if (product.getProductName().equals(newProduct.getProductName())) {
-                    logger.info("Old quantity:" + product.getQuantity() + " ___ " + "New quantity: " + newProduct.getQuantity());
-                    product.setQuantity(product.getQuantity() + newProduct.getQuantity());
-                    logger.info("New quantity: " + product.getQuantity());
+                    logger.info("Old quantity:" + product.getProductQuantity() + " ___ " + "New quantity: " + newProduct.getProductQuantity());
+                    product.setQuantity(product.getProductQuantity() + newProduct.getProductQuantity());
+                    logger.info("New quantity: " + product.getProductQuantity());
                     logger.info("Increased quantity in cart, cart size: " + products.size());
                 }
 //            totalOrderCost = getTotalOrderCost();

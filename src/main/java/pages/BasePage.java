@@ -38,6 +38,7 @@ public class BasePage {
     }
 
     public void clickElement (WebElement element) {
+        waitForElement(element);
         element.click();
     }
     public Random random = new Random();
@@ -107,7 +108,5 @@ public class BasePage {
         driver.get("http://146.59.32.4/index.php");
     }
 
-    public void loginPredefinedUser() {
 
-    }
 }
