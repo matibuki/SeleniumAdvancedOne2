@@ -27,8 +27,8 @@ public class OrderDetailsPage extends BasePage {
         return orderDate.getText();
     }
 
-    public String getOrderTotalCost() {
-        return orderTotalCost.getText();
+    public double getOrderTotalCost() {
+        return getPrice(orderTotalCost);
     }
 
     public String getOrderBillingAddress() {
@@ -50,7 +50,7 @@ public class OrderDetailsPage extends BasePage {
 
     public String returnTodayDate() {
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
-        LocalDateTime now = LocalDateTime.now();
+        Date now = new Date();
         return sdf.format(now);
     }
 

@@ -26,6 +26,7 @@ data:
   account_country: Poland
   account_number: 132313214
   payment_status: Awaiting check payment
+  shipping_cost: 7
 environment:
   test:
     envName: test

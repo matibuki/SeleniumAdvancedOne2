@@ -1,5 +1,6 @@
 package pages.userHandling;
 
+import models.User;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -59,16 +60,19 @@ public class RegistrationPage extends BasePage {
         passwordInput.sendKeys(provider.setPassword());
         birthdayInput.sendKeys(provider.setBirthdate());
     }
+//
+//    public void fillRandomUser(User newRandomUser) {
+//        setRandomSocialTitle();
+//
+//        firstNameInput.sendKeys(
+//    }
 
     public void obligatoryCheckboxes() {
         customerPrivacyCheckbox.click();
         warunkiUzytkowania.click();
     }
-
     public void saveUser() {
         submitBtn.click();
         logger.info("User saved!");
     }
-
-
 }

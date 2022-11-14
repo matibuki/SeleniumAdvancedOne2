@@ -39,6 +39,11 @@ public class CheckoutPage extends BasePage {
     @FindBy(css = "#payment-option-1")
     private WebElement paymentOptionByCheck;
 
+    @FindBy(css = "#checkout-payment-step.js-current-step")
+    private WebElement paymentOptionsSection;
+
+
+
     @FindBy(xpath = "//input[@id=\"conditions_to_approve[terms-and-conditions]\"]")
     private WebElement termsAndConditionsCheckbox;
 
@@ -70,11 +75,15 @@ public class CheckoutPage extends BasePage {
     }
 
     public void payByCheck() {
-        clickElement(paymentOptionByCheck);
+        waitForElementToBeVisible(paymentOptionsSection);
+        paymentOptionByCheck.click();
+//        clickElement(paymentOptionByCheck);
     }
 
     public void acceptTermsAndConditions() {
-        clickElement(termsAndConditionsCheckbox);
+        waitForElementToBeVisible(paymentOptionsSection);
+        termsAndConditionsCheckbox.click();
+//        clickElement(termsAndConditionsCheckbox);
     }
 
     public void placeOrder() {

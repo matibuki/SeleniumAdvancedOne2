@@ -108,5 +108,9 @@ public class BasePage {
         driver.get("http://146.59.32.4/index.php");
     }
 
+    public void openAccountPage() {
+        driver.get("http://146.59.32.4/index.php?controller=my-account");
+    }
+
 
 }

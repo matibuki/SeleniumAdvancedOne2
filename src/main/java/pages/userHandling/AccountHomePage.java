@@ -14,7 +14,7 @@ public class AccountHomePage extends BasePage {
         super(driver);
     }
 
-    @FindBy(linkText = "Order history and details")
+    @FindBy(css = "#history-link")
     private WebElement orderHistory;
 
     public void openOrderHistory() {

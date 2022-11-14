@@ -51,7 +51,7 @@ public class CartTests extends Pages {
         productsPage.openProductByName(System.getProperty("basket_productname"));
         singleProductPage.addProductToCart();
         productDialogPage.gotoCheckout();
-        String totalOrderValue = String.valueOf(cartPage.getTotalValueInCart());
+        double totalOrderValue = cartPage.getTotalValueInCart();
         cartPage.goToCheckout();
 
         checkoutPage.changeBillingAddress();
@@ -60,16 +60,17 @@ public class CartTests extends Pages {
         checkoutPage.payByCheck();
         checkoutPage.acceptTermsAndConditions();
         checkoutPage.placeOrder();
-
         String orderNumber = orderConfirmationPage.getOrderReference();
+        basePage.openAccountPage();
         accountHomePage.openOrderHistory();
         orderHistoryPage.findOrder(orderNumber);
 
         softly.assertThat(orderDetailsPage.getOrderDate()).isEqualTo(orderDetailsPage.returnTodayDate());
-        softly.assertThat(orderDetailsPage.getOrderTotalCost()).isEqualTo(System.getProperty("currency") + totalOrderValue);
+        softly.assertThat(orderDetailsPage.getOrderTotalCost() + System.getProperty("shipping_cost")).isEqualTo(totalOrderValue);
         softly.assertThat(orderDetailsPage.getOrderBillingAddress()).isEqualTo(checkoutPage.billingAddress());
         softly.assertThat(orderDetailsPage.getAddress()).isEqualTo(checkoutPage.getAddress());
         softly.assertThat(orderDetailsPage.getOrderPaymentStatus()).isEqualTo(System.getProperty("payment_status"));
+        softly.assertAll();
 
     }
 }
