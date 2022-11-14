@@ -40,7 +40,7 @@ public class CartTests extends Pages {
         }
         headerPage.openCartPage();
         softly.assertThat(expectedCart).usingRecursiveComparison().isEqualTo(cartPage.toCart());
-        softly.assertThat(cartPage.getTotalValueInCart()).isEqualTo(expectedCart.getTotalOrderCost() + cartPage.getShippingCost());
+        softly.assertThat(cartPage.getTotalValueInCart()).isEqualTo(expectedCart.getTotalOrderCost()); //  + cartPage.getShippingCost()
         softly.assertAll();
     }
 
@@ -66,7 +66,7 @@ public class CartTests extends Pages {
         orderHistoryPage.findOrder(orderNumber);
 
         softly.assertThat(orderDetailsPage.getOrderDate()).isEqualTo(orderDetailsPage.returnTodayDate());
-        softly.assertThat(orderDetailsPage.getOrderTotalCost() + System.getProperty("shipping_cost")).isEqualTo(totalOrderValue);
+        softly.assertThat(orderDetailsPage.getOrderTotalCost()).isEqualTo(totalOrderValue);
         softly.assertThat(orderDetailsPage.getOrderBillingAddress()).isEqualTo(checkoutPage.billingAddress());
         softly.assertThat(orderDetailsPage.getAddress()).isEqualTo(checkoutPage.getAddress());
         softly.assertThat(orderDetailsPage.getOrderPaymentStatus()).isEqualTo(System.getProperty("payment_status"));

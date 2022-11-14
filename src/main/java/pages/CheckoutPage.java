@@ -65,7 +65,10 @@ public class CheckoutPage extends BasePage {
     }
 
     public String billingAddress() {
-        return "test";
+        return "Mateusz B\n" +
+                "Szeligowskiego\n" +
+                "22-333 Lublin\n" +
+                "Poland";
     }
 
 
