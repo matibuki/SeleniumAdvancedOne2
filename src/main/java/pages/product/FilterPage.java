@@ -1,4 +1,4 @@
-package pages;
+package pages.product;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import pages.BasePage;
 
 public class FilterPage extends BasePage {
     private static Logger logger = LoggerFactory.getLogger(FilterPage.class);

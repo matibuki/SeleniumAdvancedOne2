@@ -1,5 +1,6 @@
 package ProductsTests;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,6 +11,7 @@ public class FiltersTest extends Pages {
 
     //        @RepeatedTest(10)
     @Test
+    @DisplayName("Filter items and verify price range")
     public void filtersTest() {
         headerPage.enterCategoryByName(System.getProperty("filterTestCategory"));
 

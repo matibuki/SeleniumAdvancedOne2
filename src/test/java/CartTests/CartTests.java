@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import start.Pages;
-import utils.Utils;
+import utils.Helpers;
 
 public class CartTests extends Pages {
     private static Logger logger = LoggerFactory.getLogger(CartTests.class);
@@ -74,7 +74,7 @@ public class CartTests extends Pages {
                 UserFactory.getAlreadyRegisteredUser().getCity() + "\n" +
                 UserFactory.getAlreadyRegisteredUser().getCountry();
 
-        softly.assertThat(orderDetailsPage.getOrderDate()).isEqualTo(Utils.todayDate());
+        softly.assertThat(orderDetailsPage.getOrderDate()).isEqualTo(Helpers.todayDate());
         softly.assertThat(orderDetailsPage.getOrderTotalCost()).isEqualTo(totalOrderValue);
         softly.assertThat(orderDetailsPage.getOrderBillingAddress()).isEqualToIgnoringNewLines(userAddress);
         softly.assertThat(orderDetailsPage.getOrderDeliveryAddress()).isEqualTo(userAddress);

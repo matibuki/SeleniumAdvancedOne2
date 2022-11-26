@@ -6,12 +6,6 @@ import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pages.BasePage;
-import pages.userHandling.LoginPage;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.util.Date;
 
 public class OrderDetailsPage extends BasePage {
     private static final Logger logger = LoggerFactory.getLogger(OrderDetailsPage.class);

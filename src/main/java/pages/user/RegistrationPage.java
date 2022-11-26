@@ -1,4 +1,4 @@
-package pages.userHandling;
+package pages.user;
 
 import models.User;
 import org.openqa.selenium.WebDriver;

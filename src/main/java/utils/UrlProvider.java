@@ -1,4 +1,4 @@
-package providers;
+package utils;
 
 public class UrlProvider {
     public static String baseUrl = System.getProperty("url");

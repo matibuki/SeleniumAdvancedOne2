@@ -1,4 +1,4 @@
-package pages.userHandling;
+package pages.user;
 
 import models.User;
 import org.openqa.selenium.WebDriver;
@@ -8,9 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pages.BasePage;
 import pages.commons.HeaderPage;
-import providers.UrlProvider;
-
-import java.util.List;
+import utils.UrlProvider;
 
 public class LoginPage extends BasePage {
     private static Logger logger = LoggerFactory.getLogger(LoginPage.class);

@@ -9,9 +9,13 @@ import pages.commons.TopMenuPage;
 import pages.order.OrderConfirmationPage;
 import pages.order.OrderDetailsPage;
 import pages.order.OrderHistoryPage;
-import pages.userHandling.AccountPage;
-import pages.userHandling.LoginPage;
-import pages.userHandling.RegistrationPage;
+import pages.product.FilterPage;
+import pages.product.ProductDialogPage;
+import pages.product.ProductsPage;
+import pages.product.SingleProductPage;
+import pages.user.AccountPage;
+import pages.user.LoginPage;
+import pages.user.RegistrationPage;
 
 public class Pages extends TestBase {
     public BasePage basePage;

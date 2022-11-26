@@ -1,6 +1,10 @@
 package models;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class Product {
+    private static final Logger logger = LoggerFactory.getLogger(Product.class);
     private String productName;
     private String productPrice;
     private int quantity;
@@ -33,5 +37,6 @@ public class Product {
         this.productName = productName;
         this.productPrice = productPrice;
         this.quantity = quantity;
+        logger.info("New product created: " + productName + " " + productPrice + " " + quantity);
     }
 }

@@ -1,4 +1,4 @@
-package pages;
+package pages.product;
 
 import models.Product;
 import org.openqa.selenium.WebDriver;
@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import pages.BasePage;
 
 public class SingleProductPage extends BasePage {
     private static final Logger logger = LoggerFactory.getLogger(SingleProductPage.class);

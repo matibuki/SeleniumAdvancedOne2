@@ -3,7 +3,7 @@ package users;
 import factory.UserFactory;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import providers.UrlProvider;
+import utils.UrlProvider;
 import start.Pages;
 
 

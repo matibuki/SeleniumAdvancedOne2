@@ -54,11 +54,8 @@ public class CartPage extends BasePage {
         Cart cart = new Cart();
         for (int i = 0; i < cartRows.size(); i++) {
             String name = productsNames.get(i).getText();
-//            logger.info("Found product in cart page " + name);
             String price = productsPrices.get(i).getText();
-//            logger.info(price);
             int quantity = Integer.parseInt(productsQuantities.get(i).getAttribute("value"));
-//            logger.info(String.valueOf(quantity));
             cart.addProduct(new Product(name, price, quantity));
         }
         return cart;
