@@ -39,15 +39,12 @@ public class Cart {
                     product.setQuantity(product.getProductQuantity() + newProduct.getProductQuantity());
                     logger.info("New quantity: " + product.getProductQuantity());
                     logger.info("Increased quantity in cart, cart size: " + products.size());
+                    return;
                 }
-//            totalOrderCost = getTotalOrderCost();
             }
-        } else {
-            products.add(newProduct);
-
-            logger.info("Added product to cart, cart size: " + products.size());
         }
-//            totalOrderCost = totalOrderCost
+        products.add(newProduct);
+        logger.info("Added product to cart, cart size: " + products.size());
     }
 
     public boolean isProductAlreadyInCart(List<Product> list, Product product) {

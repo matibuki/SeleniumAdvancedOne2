@@ -63,7 +63,7 @@ public class CartTests extends Pages {
         String orderNumber = orderConfirmationPage.getOrderReference();
         basePage.openAccountPage();
         accountHomePage.openOrderHistory();
-        orderHistoryPage.findOrder(orderNumber);
+        orderHistoryPage.findOrderAndOpen(orderNumber);
 
         softly.assertThat(orderDetailsPage.getOrderDate()).isEqualTo(orderDetailsPage.returnTodayDate());
         softly.assertThat(orderDetailsPage.getOrderTotalCost()).isEqualTo(totalOrderValue);
@@ -71,6 +71,5 @@ public class CartTests extends Pages {
         softly.assertThat(orderDetailsPage.getAddress()).isEqualTo(checkoutPage.getAddress());
         softly.assertThat(orderDetailsPage.getOrderPaymentStatus()).isEqualTo(System.getProperty("payment_status"));
         softly.assertAll();
-
     }
 }

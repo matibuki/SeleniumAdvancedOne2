@@ -1,6 +1,5 @@
 package pages;
 
-import org.apache.hc.core5.http.Header;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -30,15 +29,15 @@ public class FilterPage extends BasePage {
     @FindBy(css = ".spinner")
     private WebElement spinner;
 
-    public FilterPage setMinimumPrice(double price) {
-        return moveSlider(price, getCurrentMinPrice(), priceSliderHandlerLeft);
+    public void setMinimumPrice(double price) {
+        moveSlider(price, getCurrentMinPrice(), priceSliderHandlerLeft);
     }
 
-    public FilterPage setMaximumPrice(double price) {
-        return moveSlider(price, getCurrentMaxPrice(), priceSliderHandlerRight);
+    public void setMaximumPrice(double price) {
+        moveSlider(price, getCurrentMaxPrice(), priceSliderHandlerRight);
     }
 
-    private FilterPage moveSlider(double price, double currentPrice, WebElement sliderHandle) {
+    private void moveSlider(double price, double currentPrice, WebElement sliderHandle) {
         double minPrice = Double.parseDouble(priceSlider.getAttribute("data-slider-min"));
         double maxPrice = Double.parseDouble(priceSlider.getAttribute("data-slider-max"));
         int sliderWidth = priceSlider.getSize().width;
@@ -51,7 +50,6 @@ public class FilterPage extends BasePage {
         }
         actions.release().perform();
         wait.until(ExpectedConditions.invisibilityOf(spinner));
-        return this;
     }
 
     private String[] getCurrentPriceFromSlider() {

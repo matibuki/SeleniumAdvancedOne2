@@ -42,8 +42,6 @@ public class CheckoutPage extends BasePage {
     @FindBy(css = "#checkout-payment-step.js-current-step")
     private WebElement paymentOptionsSection;
 
-
-
     @FindBy(xpath = "//input[@id=\"conditions_to_approve[terms-and-conditions]\"]")
     private WebElement termsAndConditionsCheckbox;
 
@@ -70,8 +68,6 @@ public class CheckoutPage extends BasePage {
                 "22-333 Lublin\n" +
                 "Poland";
     }
-
-
     public void chooseRandomShippingMethod() {
         deliveryOptions.get(random.nextInt(deliveryOptions.size())).click();
         deliveryOptionsBtn.click();
@@ -80,13 +76,11 @@ public class CheckoutPage extends BasePage {
     public void payByCheck() {
         waitForElementToBeVisible(paymentOptionsSection);
         paymentOptionByCheck.click();
-//        clickElement(paymentOptionByCheck);
     }
 
     public void acceptTermsAndConditions() {
         waitForElementToBeVisible(paymentOptionsSection);
         termsAndConditionsCheckbox.click();
-//        clickElement(termsAndConditionsCheckbox);
     }
 
     public void placeOrder() {

@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pages.BasePage;
-import pages.home.HeaderPage;
+import pages.commons.HeaderPage;
 
 public class LoginPage extends BasePage {
     private static Logger logger = LoggerFactory.getLogger(LoginPage.class);

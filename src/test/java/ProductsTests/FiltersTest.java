@@ -24,11 +24,12 @@ public class FiltersTest extends Pages {
             for (int i = 0; i < productsPage.getProducts().size(); i++) {
                 logger.info("Product price: " + productsPage.getProductPrice(i));
 
-                softly.assertThat(productsPage.getProductPrice(i)).isBetween(priceRangeMin,priceRangeMax);
-                softly.assertAll();
+                softly.assertThat(productsPage.getProductPrice(i)).isBetween(priceRangeMin, priceRangeMax);
+
             }
         } else {
             logger.info("There are no products in that price range!");
         }
+        softly.assertAll();
     }
 }

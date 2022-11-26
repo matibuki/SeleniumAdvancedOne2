@@ -8,9 +8,6 @@ data:
   maxPriceRange: 10
   filterTestCategory: art
   onSaleHeader: ON SALE
-  registrationPage: http://146.59.32.4/index.php?controller=authentication&create_account=1
-  registeredUserUrl: http://146.59.32.4/index.php
-  login_url: http://146.59.32.4/index.php?controller=authentication&back=my-account
   basket_categoryname: ART
   basket_productname: THE BEST IS YET POSTER
   basket_quantity: 3

@@ -1,6 +1,5 @@
-package pages.home;
+package pages.commons;
 
-import models.Cart;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

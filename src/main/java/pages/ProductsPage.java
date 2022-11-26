@@ -53,9 +53,6 @@ public class ProductsPage extends BasePage {
     @FindBy(css = ".product-flag")
     private List<WebElement> discountTag;
 
-//    @FindBy(linkText = "THE BEST IS YET POSTER")
-//    private WebElement thebestisyetPoster;
-
     public List<WebElement> getProducts() {
         return products;
     }

@@ -34,8 +34,4 @@ public class Product {
         this.productPrice = productPrice;
         this.quantity = quantity;
     }
-//    @Override
-//    public String toString() {
-//        return ("Product name: " + productName + " price: " + productPrice + " quantity: " + quantity);
-//    }
 }

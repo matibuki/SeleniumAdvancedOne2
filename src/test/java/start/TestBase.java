@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 
 public class TestBase {
     private static Logger logger = LoggerFactory.getLogger(TestBase.class);
-    public static WebDriver driver;
+    public WebDriver driver;
     private static BrowserFactory browserFactory;
     private static PropertyStore propertyStore;
 

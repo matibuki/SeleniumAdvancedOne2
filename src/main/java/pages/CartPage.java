@@ -45,18 +45,13 @@ public class CartPage extends BasePage {
     @FindBy(css = ".checkout .btn-primary")
     private WebElement goToCheckoutBtn;
 
-
-    BasePage basePage = new BasePage(driver);
-
-
-
     public void removeProductFromCart() {
         trashIcon.click();
         logger.info("Product removed from cart");
     }
 
     public Cart toCart() {
-        Cart websiteCart = new Cart();
+        Cart cart = new Cart();
         for (int i = 0; i < cartRows.size(); i++) {
             String name = productsNames.get(i).getText();
             logger.info("Found product in cart page " + name);
@@ -64,32 +59,26 @@ public class CartPage extends BasePage {
             logger.info(price);
             int quantity = Integer.parseInt(productsQuantities.get(i).getAttribute("value"));
             logger.info(String.valueOf(quantity));
-            websiteCart.addProduct(new Product(name, price, quantity));
+            cart.addProduct(new Product(name, price, quantity));
         }
-        return websiteCart;
+        return cart;
     }
     public List<WebElement> getCartRows() {
         return cartRows;
     }
     public double getTotalValueInCart() {
         logger.info("Value in cart: " + String.valueOf(totalValueInCart.getText()));
-        return basePage.getPrice(totalValueInCart);
-
+        return getPrice(totalValueInCart);
     }
 
     public double getShippingCost() {
-        return basePage.getPrice(shippingCost);
+        return getPrice(shippingCost);
     }
 
     public void goToCheckout() {
         waitForElement(goToCheckoutBtn);
         goToCheckoutBtn.click();
-
     }
-
-//    public String singleProduct(List<Product> list){
-//        return list.get(0).toString();
-//    }
 }
 
 

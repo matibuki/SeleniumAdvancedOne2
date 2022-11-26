@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import providers.UrlProvider;
 
 import java.math.BigDecimal;
 import java.time.Duration;
@@ -33,8 +34,8 @@ public class BasePage {
     public BasePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        actions = new Actions(driver);
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(Long.parseLong(System.getProperty("wait"))));
+        this.actions = new Actions(driver);
     }
 
     public void clickElement (WebElement element) {
@@ -52,17 +53,14 @@ public class BasePage {
     }
 
     public void waitForElement(WebElement element) {
-        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(5)); //todo
         wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
     public void waitForElementToBeVisible(WebElement element) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5)); //todo
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
     public void waitForElements(List<WebElement> elements) {
-        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(5));
         wait.until(ExpectedConditions.visibilityOfAllElements(elements));
     }
 
@@ -70,9 +68,8 @@ public class BasePage {
         return Double.parseDouble(element.getText().replace(System.getProperty("currency"), ""));
     }
 
-
     public void openRegistrationPage() {
-        driver.get(System.getProperty("registrationPage"));
+        driver.get(UrlProvider.registration);
     }
 
     public String currentUrl() {
@@ -103,14 +100,10 @@ public class BasePage {
     public int productsCountInString(WebElement element) {
         return Integer.parseInt(element.getText().replaceAll("[^0-9]", ""));
     }
-
     public void openHomepage() {
         driver.get("http://146.59.32.4/index.php");
     }
-
     public void openAccountPage() {
         driver.get("http://146.59.32.4/index.php?controller=my-account");
     }
-
-
 }
