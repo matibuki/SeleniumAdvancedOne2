@@ -37,6 +37,6 @@ public class Product {
         this.productName = productName;
         this.productPrice = productPrice;
         this.quantity = quantity;
-        logger.info("New product created: " + productName + " " + productPrice + " " + quantity);
+        logger.info("New product created: " + productName + "-" + productPrice + "-q:" + quantity);
     }
 }

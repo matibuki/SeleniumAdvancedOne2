@@ -36,7 +36,7 @@ public class CartPage extends BasePage {
     @FindBy(css = ".cart-item")
     private List<WebElement> cartRows;
 
-    @FindBy(css = ".cart-total .value")
+    @FindBy(css = "#cart-subtotal-products .value")
     private WebElement totalValueInCart;
 
     @FindBy(css = "#cart-subtotal-shipping .value")
