@@ -63,12 +63,6 @@ public class CheckoutPage extends BasePage {
         continueBtn.click();
     }
 
-    public String billingAddress() {
-        return "Mateusz B\n" +
-                "Szeligowskiego\n" +
-                "22-333 Lublin\n" +
-                "Poland";
-    }
     public void chooseRandomShippingMethod() {
         deliveryOptions.get(random.nextInt(deliveryOptions.size())).click();
         deliveryOptionsBtn.click();
@@ -88,7 +82,4 @@ public class CheckoutPage extends BasePage {
         clickElement(placeOrderBtn);
     }
 
-    public String getAddress() {
-        return "test adddress";
-    }
 }

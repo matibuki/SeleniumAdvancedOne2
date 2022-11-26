@@ -7,7 +7,6 @@ import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pages.BasePage;
-import providers.DataProvider;
 
 import java.util.List;
 

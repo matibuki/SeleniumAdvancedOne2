@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 public class OrderDetailsPage extends BasePage {
-    private static Logger logger = LoggerFactory.getLogger(OrderDetailsPage.class);
+    private static final Logger logger = LoggerFactory.getLogger(OrderDetailsPage.class);
 
     public OrderDetailsPage(WebDriver driver) {
         super(driver);

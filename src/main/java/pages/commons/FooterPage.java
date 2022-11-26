@@ -8,17 +8,12 @@ import org.slf4j.LoggerFactory;
 import pages.BasePage;
 
 public class FooterPage extends BasePage {
-    private static Logger logger = LoggerFactory.getLogger(FooterPage.class);
+    private static final Logger logger = LoggerFactory.getLogger(FooterPage.class);
 
     public FooterPage(WebDriver driver) {
         super(driver);
     }
 
-    public WebElement getPricesDropLink() {
-        return pricesDropLink;
-    }
-
-    //PRODUCTS
     @FindBy(css = "#link-product-page-prices-drop-1")
     private WebElement pricesDropLink;
 
@@ -27,6 +22,4 @@ public class FooterPage extends BasePage {
 
     @FindBy(css = "link-product-page-best-sales-1")
     private WebElement bestSalesLink;
-
-
 }

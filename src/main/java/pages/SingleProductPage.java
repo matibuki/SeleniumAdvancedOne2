@@ -8,7 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class SingleProductPage extends BasePage {
-    private static Logger logger = LoggerFactory.getLogger(SingleProductPage.class);
+    private static final Logger logger = LoggerFactory.getLogger(SingleProductPage.class);
 
     public SingleProductPage(WebDriver driver) {
         super(driver);
@@ -20,7 +20,6 @@ public class SingleProductPage extends BasePage {
     private WebElement productPrice;
     @FindBy(css = "#quantity_wanted")
     private WebElement quantity;
-
     @FindBy(css = ".btn.btn-primary.add-to-cart")
     private WebElement addToCartBtn;
 
@@ -40,7 +39,7 @@ public class SingleProductPage extends BasePage {
         this.quantity.sendKeys(number);
     }
 
-    public Product newProductBuilder() {
+    public Product newProduct() {
         String newProductName = this.productName.getText();
         String newProductPrice = this.productPrice.getText();
         int newProductQuantity = Integer.parseInt(this.quantity.getAttribute("value"));

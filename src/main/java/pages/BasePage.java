@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Random;
 
 public class BasePage {
-    private static Logger logger = LoggerFactory.getLogger(BasePage.class);
+    private static final Logger logger = LoggerFactory.getLogger(BasePage.class);
     public WebDriver driver;
     public WebDriverWait wait;
     public Actions actions;
@@ -68,10 +68,6 @@ public class BasePage {
         return Double.parseDouble(element.getText().replace(System.getProperty("currency"), ""));
     }
 
-    public void openRegistrationPage() {
-        driver.get(UrlProvider.registration);
-    }
-
     public String currentUrl() {
         return driver.getCurrentUrl();
     }
@@ -104,5 +100,8 @@ public class BasePage {
     }
     public void openAccountPage() {
         driver.get(UrlProvider.account);
+    }
+    public void openRegistrationPage() {
+        driver.get(UrlProvider.registration);
     }
 }

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CartPage extends BasePage {
-    private static Logger logger = LoggerFactory.getLogger(CartPage.class);
+    private static final Logger logger = LoggerFactory.getLogger(CartPage.class);
 
     public CartPage(WebDriver driver) {
         super(driver);
@@ -67,7 +67,7 @@ public class CartPage extends BasePage {
         return cartRows;
     }
     public double getTotalValueInCart() {
-        logger.info("Value in cart: " + String.valueOf(totalValueInCart.getText()));
+        logger.info("Value in cart: " + totalValueInCart.getText());
         return getPrice(totalValueInCart);
     }
 

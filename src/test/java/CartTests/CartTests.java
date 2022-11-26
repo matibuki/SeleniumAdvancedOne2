@@ -20,7 +20,7 @@ public class CartTests extends Pages {
         productsPage.openProductByName(System.getProperty("basket_productname"));
         singleProductPage.setProductQuantity(System.getProperty("basket_quantity"));
         Cart expectedCart = new Cart();
-        expectedCart.addProduct(singleProductPage.newProductBuilder());
+        expectedCart.addProduct(singleProductPage.newProduct());
         singleProductPage.addProductToCart();
 
         softly.assertThat(expectedCart.getProducts().get(0).getProductName()).isEqualTo(productDialogPage.productInDialog().getProductName());
@@ -36,19 +36,19 @@ public class CartTests extends Pages {
             basePage.openHomepage();
             productsPage.openRandomProductFromHomePage();
             singleProductPage.setRandomProductQuantity(1, 5);
-            expectedCart.addProduct(singleProductPage.newProductBuilder());
+            expectedCart.addProduct(singleProductPage.newProduct());
             singleProductPage.addProductToCart();
             productDialogPage.continueShopping();
         }
         headerPage.openCartPage();
         softly.assertThat(expectedCart).usingRecursiveComparison().isEqualTo(cartPage.toCart());
-        softly.assertThat(cartPage.getTotalValueInCart()).isEqualTo(expectedCart.getTotalOrderCost()); //  + cartPage.getShippingCost()
+        softly.assertThat(cartPage.getTotalValueInCart()).isEqualTo(expectedCart.getTotalOrderCost());
         softly.assertAll();
     }
 
     @Test
     public void checkoutTest() {
-        loginPage.loginPredefinedUser(UserFactory.getAlreadyRegisteredUser());
+        loginPage.loginUser(UserFactory.getAlreadyRegisteredUser());
         headerPage.enterCategoryByName(System.getProperty("basket_categoryname"));
         productsPage.openProductByName(System.getProperty("basket_productname"));
         singleProductPage.addProductToCart();

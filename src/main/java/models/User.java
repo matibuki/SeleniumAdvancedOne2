@@ -1,7 +1,5 @@
 package models;
 
-import providers.DataProvider;
-
 public class User {
     private String firstName;
     private String lastName;
@@ -46,14 +44,12 @@ public class User {
         return country;
     }
 
-
     private User() {
     }
 
     public static UserBuilder builder() {
         return new UserBuilder();
     }
-
 
     public static final class UserBuilder {
         private String firstName;

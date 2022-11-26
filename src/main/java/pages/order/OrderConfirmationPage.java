@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 import pages.BasePage;
 
 public class OrderConfirmationPage extends BasePage {
-    private static Logger logger = LoggerFactory.getLogger(OrderConfirmationPage.class);
+    private static final Logger logger = LoggerFactory.getLogger(OrderConfirmationPage.class);
 
     public OrderConfirmationPage(WebDriver driver) {
         super(driver);

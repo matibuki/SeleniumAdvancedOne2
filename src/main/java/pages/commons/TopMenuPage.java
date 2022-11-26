@@ -105,42 +105,4 @@ public class TopMenuPage extends BasePage {
         }
         return this;
     }
-//
-//
-//    public TopMenuPage moveMouseToMenClothes() {
-//        mouseHover(clothesCategory);
-//
-//        mouseHover(clothesMenCategory);
-//        clothesMenCategory.click();
-//        waitForElement(categoryTitle);
-//        return this;
-//    }
-//
-//    public TopMenuPage moveMouseToWomenClothes() {
-//        mouseHover(clothesCategory);
-//        mouseHover(clothesWomenCategory);
-//        clothesWomenCategory.click();
-//        waitForElement(categoryTitle);
-//        return this;
-//    }
-//
-//    public TopMenuPage moveMouseToAccessories() {
-//        mouseHover(accessoriesCategory);
-//
-//        mouseHover(stationeryCategory);
-//        stationeryCategory.click();
-//        waitForElement(categoryTitle);
-//
-//        mouseHover(homeAccessoriesCategory);
-//        homeAccessoriesCategory.click();
-//        waitForElement(categoryTitle);
-//
-//        return this;
-//    }
-//
-//    public TopMenuPage moveMouseToArt() {
-//        mouseHover(artCategory);
-//        return this;
-//    }
-
 }

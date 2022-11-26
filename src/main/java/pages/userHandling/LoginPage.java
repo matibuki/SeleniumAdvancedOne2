@@ -10,6 +10,8 @@ import pages.BasePage;
 import pages.commons.HeaderPage;
 import providers.UrlProvider;
 
+import java.util.List;
+
 public class LoginPage extends BasePage {
     private static Logger logger = LoggerFactory.getLogger(LoginPage.class);
 
@@ -24,7 +26,7 @@ public class LoginPage extends BasePage {
     @FindBy(css = "#submit-login")
     private WebElement signInBtn;
 
-    public void loginPredefinedUser(User user) {
+    public void loginUser(User user) {
         driver.get(UrlProvider.login);
         waitForElement(emailInput);
         emailInput.sendKeys(user.getEmail());

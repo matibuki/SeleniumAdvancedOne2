@@ -9,7 +9,7 @@ import pages.BasePage;
 import java.util.List;
 
 public class OrderHistoryPage extends BasePage {
-    private static Logger logger = LoggerFactory.getLogger(OrderHistoryPage.class);
+    private static final Logger logger = LoggerFactory.getLogger(OrderHistoryPage.class);
     public OrderHistoryPage(WebDriver driver) {
         super(driver);
     }
@@ -29,5 +29,6 @@ public class OrderHistoryPage extends BasePage {
                 detailsLinkList.get(i).click();
             }
         }
+        logger.info("Order found:" + orderNumber);
     }
 }
