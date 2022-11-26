@@ -81,10 +81,9 @@ public class BasePage {
         eventFiringMouse = new EventFiringMouse(driver, webListener);
         Locatable item = (Locatable) element;
         Coordinates coordinates = item.getCoordinates();
-//        highlightElement(element);
+        highlightElement(element);
         eventFiringMouse.mouseMove(coordinates);
         logger.info("Mouse hover on element" + element.getText());
-
     }
 
     protected void highlightElement(WebElement element) {
@@ -101,9 +100,9 @@ public class BasePage {
         return Integer.parseInt(element.getText().replaceAll("[^0-9]", ""));
     }
     public void openHomepage() {
-        driver.get("http://146.59.32.4/index.php");
+        driver.get(UrlProvider.baseUrl);
     }
     public void openAccountPage() {
-        driver.get("http://146.59.32.4/index.php?controller=my-account");
+        driver.get(UrlProvider.account);
     }
 }

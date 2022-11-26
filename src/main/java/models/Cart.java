@@ -7,13 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cart {
-    private static Logger logger = LoggerFactory.getLogger(Cart.class);
+    private static final Logger logger = LoggerFactory.getLogger(Cart.class);
 
     public List<Product> getProducts() {
         return products;
     }
 
-    private List<Product> products;
+    private final List<Product> products;
 
     public double getTotalOrderCost() {
         return totalOrderCost;
@@ -25,7 +25,6 @@ public class Cart {
         this.products = new ArrayList<>();
         this.totalOrderCost = 0;
     }
-
 
     public void addProduct(Product newProduct) {
         logger.info("Current cart size: " + products.size());

@@ -7,10 +7,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pages.BasePage;
 
-public class AccountHomePage extends BasePage {
-    private static Logger logger = LoggerFactory.getLogger(AccountHomePage.class);
+public class AccountPage extends BasePage {
+    private static Logger logger = LoggerFactory.getLogger(AccountPage.class);
 
-    public AccountHomePage(WebDriver driver) {
+    public AccountPage(WebDriver driver) {
         super(driver);
     }
 

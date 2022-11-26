@@ -9,7 +9,7 @@ import pages.commons.TopMenuPage;
 import pages.order.OrderConfirmationPage;
 import pages.order.OrderDetailsPage;
 import pages.order.OrderHistoryPage;
-import pages.userHandling.AccountHomePage;
+import pages.userHandling.AccountPage;
 import pages.userHandling.LoginPage;
 import pages.userHandling.RegistrationPage;
 
@@ -28,7 +28,7 @@ public class Pages extends TestBase {
     public LoginPage loginPage;
     public CheckoutPage checkoutPage;
     public OrderConfirmationPage orderConfirmationPage;
-    public AccountHomePage accountHomePage;
+    public AccountPage accountPage;
     public OrderHistoryPage orderHistoryPage;
     public OrderDetailsPage orderDetailsPage;
 
@@ -47,7 +47,7 @@ public class Pages extends TestBase {
         loginPage = new LoginPage(driver);
         checkoutPage = new CheckoutPage(driver);
         orderConfirmationPage = new OrderConfirmationPage(driver);
-        accountHomePage = new AccountHomePage(driver);
+        accountPage = new AccountPage(driver);
         orderHistoryPage = new OrderHistoryPage(driver);
         orderDetailsPage = new OrderDetailsPage(driver);
 

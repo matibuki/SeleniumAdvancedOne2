@@ -23,7 +23,7 @@ public class OrderHistoryPage extends BasePage {
     @FindBy(xpath = "//*[@id=\"content\"]/table/tbody/tr")
     private List<WebElement> ordersList;
 
-    public void findOrderAndOpen(String orderNumber) {
+    public void openOrderByNumber(String orderNumber) {
         for (int i = 0; i < ordersList.size(); i++) {
             if (ordersList.get(i).getText().contains(orderNumber)) {
                 detailsLinkList.get(i).click();

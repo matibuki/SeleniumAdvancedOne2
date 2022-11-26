@@ -50,22 +50,15 @@ public class RegistrationPage extends BasePage {
         logger.info("Random gender selected");
     }
 
-    public void fillRegistrationForm() {
+    public void fillRegistrationForm(User user) {
         setRandomSocialTitle();
 
-        DataProvider provider = new DataProvider();
-        firstNameInput.sendKeys(provider.setFirstName());
-        lastNameInput.sendKeys(provider.setLastName());
-        emailInput.sendKeys((provider.setEmail()));
-        passwordInput.sendKeys(provider.setPassword());
-        birthdayInput.sendKeys(provider.setBirthdate());
+        firstNameInput.sendKeys(user.getFirstName());
+        lastNameInput.sendKeys(user.getLastName());
+        emailInput.sendKeys(user.getEmail());
+        passwordInput.sendKeys(user.getPassword());
+        birthdayInput.sendKeys(user.getBirthdate());
     }
-//
-//    public void fillRandomUser(User newRandomUser) {
-//        setRandomSocialTitle();
-//
-//        firstNameInput.sendKeys(
-//    }
 
     public void obligatoryCheckboxes() {
         customerPrivacyCheckbox.click();

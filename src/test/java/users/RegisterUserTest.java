@@ -1,5 +1,6 @@
 package users;
 
+import factory.UserFactory;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import providers.UrlProvider;
@@ -8,10 +9,10 @@ import start.Pages;
 
 public class RegisterUserTest extends Pages {
     @Test
-    @DisplayName("Register new user")
+    @DisplayName("Register new randomly generated user")
     public void registerUserTest() {
         basePage.openRegistrationPage();
-        registrationPage.fillRegistrationForm();
+        registrationPage.fillRegistrationForm(UserFactory.getRandomUser());
         registrationPage.obligatoryCheckboxes();
         registrationPage.saveUser();
 

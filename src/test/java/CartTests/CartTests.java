@@ -1,11 +1,13 @@
 package CartTests;
 
+import factory.UserFactory;
 import models.Cart;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import start.Pages;
+import utils.Utils;
 
 public class CartTests extends Pages {
     private static Logger logger = LoggerFactory.getLogger(CartTests.class);
@@ -46,7 +48,7 @@ public class CartTests extends Pages {
 
     @Test
     public void checkoutTest() {
-        loginPage.loginPredefinedUser();
+        loginPage.loginPredefinedUser(UserFactory.getAlreadyRegisteredUser());
         headerPage.enterCategoryByName(System.getProperty("basket_categoryname"));
         productsPage.openProductByName(System.getProperty("basket_productname"));
         singleProductPage.addProductToCart();
@@ -55,20 +57,27 @@ public class CartTests extends Pages {
         cartPage.goToCheckout();
 
         checkoutPage.changeBillingAddress();
-        checkoutPage.fillDifferentAddress();
+        checkoutPage.fillDifferentAddress(UserFactory.getAlreadyRegisteredUser());
         checkoutPage.chooseRandomShippingMethod();
         checkoutPage.payByCheck();
         checkoutPage.acceptTermsAndConditions();
         checkoutPage.placeOrder();
         String orderNumber = orderConfirmationPage.getOrderReference();
         basePage.openAccountPage();
-        accountHomePage.openOrderHistory();
-        orderHistoryPage.findOrderAndOpen(orderNumber);
+        accountPage.openOrderHistory();
+        orderHistoryPage.openOrderByNumber(orderNumber);
 
-        softly.assertThat(orderDetailsPage.getOrderDate()).isEqualTo(orderDetailsPage.returnTodayDate());
+        String userAddress = UserFactory.getAlreadyRegisteredUser().getFirstName() + " " +
+                UserFactory.getAlreadyRegisteredUser().getLastName() + "\n" +
+                UserFactory.getAlreadyRegisteredUser().getStreetName() + "\n" +
+                UserFactory.getAlreadyRegisteredUser().getZipCode() + " " +
+                UserFactory.getAlreadyRegisteredUser().getCity() + "\n" +
+                UserFactory.getAlreadyRegisteredUser().getCountry();
+
+        softly.assertThat(orderDetailsPage.getOrderDate()).isEqualTo(Utils.todayDate());
         softly.assertThat(orderDetailsPage.getOrderTotalCost()).isEqualTo(totalOrderValue);
-        softly.assertThat(orderDetailsPage.getOrderBillingAddress()).isEqualTo(checkoutPage.billingAddress());
-        softly.assertThat(orderDetailsPage.getAddress()).isEqualTo(checkoutPage.getAddress());
+        softly.assertThat(orderDetailsPage.getOrderBillingAddress()).isEqualToIgnoringNewLines(userAddress);
+        softly.assertThat(orderDetailsPage.getOrderDeliveryAddress()).isEqualTo(userAddress);
         softly.assertThat(orderDetailsPage.getOrderPaymentStatus()).isEqualTo(System.getProperty("payment_status"));
         softly.assertAll();
     }

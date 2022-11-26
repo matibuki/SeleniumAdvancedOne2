@@ -1,5 +1,6 @@
 package pages;
 
+import models.User;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -52,13 +53,13 @@ public class CheckoutPage extends BasePage {
         clickElement(diffAddressLink);
     }
 
-    public void fillDifferentAddress() {
+    public void fillDifferentAddress(User user) {
         waitForElement(addressField);
-        addressField.sendKeys(System.getProperty("account_address"));
-        postcodeField.sendKeys(System.getProperty("account_postcode"));
+        addressField.sendKeys(user.getStreetName());
+        postcodeField.sendKeys(user.getZipCode());
         actions.scrollToElement(cityField);
         waitForElement(cityField);
-        cityField.sendKeys(System.getProperty("account_city"));
+        cityField.sendKeys(user.getCity());
         continueBtn.click();
     }
 

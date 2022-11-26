@@ -23,6 +23,19 @@ public class OrderDetailsPage extends BasePage {
     @FindBy(xpath = "//*[@id=\"order-history\"]/table/tbody/tr/td[1]")
     private WebElement orderDate;
 
+    @FindBy(xpath = "//*[@id=\"order-products\"]/tfoot/tr[position()=last()]/td[2]")
+    private WebElement orderTotalCost;
+
+
+    @FindBy(xpath = "//*[@id='delivery-address']/address")
+    private WebElement orderDeliveryAddress;
+
+    @FindBy(xpath = "//*[@id='invoice-address']/address")
+    private WebElement orderBillingAddress;
+
+    @FindBy(xpath = "//*[@id=\"order-history\"]/table/tbody/tr/td[2]/span")
+    private WebElement orderPaymentStatus;
+
     public String getOrderDate() {
         return orderDate.getText();
     }
@@ -31,31 +44,15 @@ public class OrderDetailsPage extends BasePage {
         return getPrice(orderTotalCost);
     }
 
+    public String getOrderDeliveryAddress() {
+        return orderDeliveryAddress.getText();
+    }
+
     public String getOrderBillingAddress() {
         return orderBillingAddress.getText();
     }
 
     public String getOrderPaymentStatus() {
         return orderPaymentStatus.getText();
-    }
-
-    @FindBy(xpath = "//*[@id=\"order-products\"]/tfoot/tr[position()=last()]/td[2]")
-    private WebElement orderTotalCost;
-
-    @FindBy(xpath = "//*[@id='invoice-address']/address")
-    private WebElement orderBillingAddress;
-
-    @FindBy(xpath = "//*[@id=\"order-history\"]/table/tbody/tr/td[2]/span")
-    private WebElement orderPaymentStatus;
-
-    public String returnTodayDate() {
-        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
-        Date now = new Date();
-        return sdf.format(now);
-    }
-
-
-    public String getAddress() {
-        return "test";
     }
 }
