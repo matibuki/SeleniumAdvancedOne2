@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 import java.util.List;
 
 public class CheckoutPage extends BasePage {
-    private static Logger logger = LoggerFactory.getLogger(CheckoutPage.class);
+    private static final Logger logger = LoggerFactory.getLogger(CheckoutPage.class);
 
     public CheckoutPage(WebDriver driver) {
         super(driver);
@@ -53,7 +53,7 @@ public class CheckoutPage extends BasePage {
         clickElement(diffAddressLink);
     }
 
-    public void fillDifferentAddress(User user) {
+    public void fillAddress(User user) {
         waitForElement(addressField);
         addressField.sendKeys(user.getStreetName());
         postcodeField.sendKeys(user.getZipCode());
@@ -61,6 +61,7 @@ public class CheckoutPage extends BasePage {
         waitForElement(cityField);
         cityField.sendKeys(user.getCity());
         continueBtn.click();
+        logger.info("Address filled");
     }
 
     public void chooseRandomShippingMethod() {

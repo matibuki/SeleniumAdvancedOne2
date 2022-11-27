@@ -31,10 +31,12 @@ public class FilterPage extends BasePage {
     private WebElement spinner;
 
     public void setMinimumPrice(double price) {
+        waitForElement(priceSliderHandlerLeft);
         moveSlider(price, getCurrentMinPrice(), priceSliderHandlerLeft);
     }
 
     public void setMaximumPrice(double price) {
+        waitForElement(priceSliderHandlerRight);
         moveSlider(price, getCurrentMaxPrice(), priceSliderHandlerRight);
     }
 

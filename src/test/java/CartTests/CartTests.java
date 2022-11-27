@@ -3,7 +3,6 @@ package CartTests;
 import factory.UserFactory;
 import models.Cart;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,7 +10,7 @@ import start.Pages;
 import utils.Helpers;
 
 public class CartTests extends Pages {
-    private static Logger logger = LoggerFactory.getLogger(CartTests.class);
+    private static final Logger logger = LoggerFactory.getLogger(CartTests.class);
 
     //        @RepeatedTest(10)
     @Test
@@ -58,7 +57,7 @@ public class CartTests extends Pages {
         cartPage.goToCheckout();
 
         checkoutPage.changeBillingAddress();
-        checkoutPage.fillDifferentAddress(UserFactory.getAlreadyRegisteredUser());
+        checkoutPage.fillAddress(UserFactory.getAlreadyRegisteredUser());
         checkoutPage.chooseRandomShippingMethod();
         checkoutPage.payByCheck();
         checkoutPage.acceptTermsAndConditions();

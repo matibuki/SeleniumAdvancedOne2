@@ -83,6 +83,9 @@ public class HeaderPage extends BasePage {
                 logger.info("Category chosen= " + category.getText());
                 category.click();
             }
+            else {
+                logger.info("Category not found");
+            }
         }
     }
 

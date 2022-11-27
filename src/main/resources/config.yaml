@@ -6,7 +6,7 @@ data:
   currency: $
   minPriceRange: 9
   maxPriceRange: 10
-  filterTestCategory: art
+  filterTestCategory: ART
   onSaleHeader: ON SALE
   basket_categoryname: ART
   basket_productname: THE BEST IS YET POSTER
