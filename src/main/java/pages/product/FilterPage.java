@@ -8,6 +8,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pages.BasePage;
 
+import java.math.BigDecimal;
+
 public class FilterPage extends BasePage {
     private static Logger logger = LoggerFactory.getLogger(FilterPage.class);
 

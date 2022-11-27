@@ -9,6 +9,11 @@ import org.slf4j.LoggerFactory;
 import start.Pages;
 import utils.Helpers;
 
+import java.math.BigDecimal;
+
+import static org.assertj.core.api.Assertions.offset;
+import static org.assertj.core.api.Assertions.withPrecision;
+
 public class CartTests extends Pages {
     private static final Logger logger = LoggerFactory.getLogger(CartTests.class);
 
@@ -42,7 +47,7 @@ public class CartTests extends Pages {
         }
         headerPage.openCartPage();
         softly.assertThat(expectedCart).usingRecursiveComparison().isEqualTo(cartPage.toCart());
-        softly.assertThat(cartPage.getTotalValueInCart()).isEqualTo(expectedCart.getTotalOrderCost());
+        softly.assertThat(cartPage.getTotalValueInCart()).isEqualByComparingTo(expectedCart.getTotalOrderCost());
         softly.assertAll();
     }
 
@@ -53,7 +58,7 @@ public class CartTests extends Pages {
         productsPage.openProductByName(System.getProperty("basket_productname"));
         singleProductPage.addProductToCart();
         productDialogPage.gotoCheckout();
-        double totalOrderValue = cartPage.getTotalValueInCart();
+        BigDecimal totalOrderValue = cartPage.getTotalValueInCart();
         cartPage.goToCheckout();
 
         checkoutPage.changeBillingAddress();

@@ -8,6 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,9 +64,9 @@ public class CartPage extends BasePage {
     public List<WebElement> getCartRows() {
         return cartRows;
     }
-    public double getTotalValueInCart() {
+    public BigDecimal getTotalValueInCart() {
         logger.info("Value in cart: " + totalValueInCart.getText());
-        return getPrice(totalValueInCart);
+        return BigDecimal.valueOf(getPrice(totalValueInCart));
     }
 
     public double getShippingCost() {

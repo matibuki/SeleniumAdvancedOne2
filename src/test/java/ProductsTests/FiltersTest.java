@@ -6,6 +6,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import start.Pages;
 
+import java.math.BigDecimal;
+
 public class FiltersTest extends Pages {
     private static final Logger logger = LoggerFactory.getLogger(FiltersTest.class);
 

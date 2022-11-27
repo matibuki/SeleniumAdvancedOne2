@@ -15,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import utils.UrlProvider;
 
+import java.math.BigDecimal;
 import java.time.Duration;
 import java.util.List;
 import java.util.Random;
@@ -63,7 +64,7 @@ public class BasePage {
         wait.until(ExpectedConditions.visibilityOfAllElements(elements));
     }
 
-    public Double getPrice(WebElement element) {
+    public double getPrice(WebElement element) {
         return Double.parseDouble(element.getText().replace(System.getProperty("currency"), ""));
     }
 
