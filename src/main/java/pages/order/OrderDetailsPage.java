@@ -36,8 +36,8 @@ public class OrderDetailsPage extends BasePage {
         return orderDate.getText();
     }
 
-    public double getOrderTotalCost() {
-        return getPrice(orderTotalCost);
+    public BigDecimal getOrderTotalCost() {
+        return BigDecimal.valueOf(getPrice(orderTotalCost));
     }
 
     public String getOrderDeliveryAddress() {
