@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class CheckoutPage extends BasePage {
     private static final Logger logger = LoggerFactory.getLogger(CheckoutPage.class);
@@ -18,7 +19,10 @@ public class CheckoutPage extends BasePage {
 
     @FindBy(linkText = "Billing address differs from shipping address")
     private WebElement diffAddressLink;
-
+    @FindBy(css = "#invoice-addresses")
+    private WebElement invoiceAddress;
+    @FindBy(css = "#invoice-addresses .address-item:last-of-type .delete-address")
+    private WebElement deleteAddressBtn;
     @FindBy(xpath = "//input[@name=\"address1\"]")
     private WebElement addressField;
 
@@ -49,7 +53,7 @@ public class CheckoutPage extends BasePage {
     @FindBy(css = "#payment-confirmation .btn")
     private WebElement placeOrderBtn;
 
-    public void changeBillingAddress() {
+    public void setNewBillingAddress() {
         clickElement(diffAddressLink);
     }
 
@@ -83,4 +87,9 @@ public class CheckoutPage extends BasePage {
         clickElement(placeOrderBtn);
     }
 
+    public void deleteBillingAddressIfItExists() {
+        if (isElementDisplayed(invoiceAddress)) {
+            deleteAddressBtn.click();
+        }
+    }
 }

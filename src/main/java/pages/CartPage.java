@@ -66,7 +66,10 @@ public class CartPage extends BasePage {
     }
     public BigDecimal getTotalValueInCart() {
         logger.info("Value in cart: " + totalValueInCart.getText());
-        return BigDecimal.valueOf(getPrice(totalValueInCart));
+        String a = totalValueInCart.getText();
+        String b = a.replace(",", "");
+        String c = b.replace(System.getProperty("currency"), "");
+        return BigDecimal.valueOf(Double.parseDouble(c));
     }
 
     public double getShippingCost() {
