@@ -33,7 +33,7 @@ public class CartTests extends Pages {
     @Test
     public void cartCalculationsTest() {
         Cart expectedCart = new Cart();
-        for (int i = 0; i < Integer.parseInt(System.getProperty("numberOfCalculationRuns")); i++) {
+        for (int i = 1; i <= Integer.parseInt(System.getProperty("numberOfCalculationRuns")); i++) {
             basePage.openHomepage();
             productsPage.openRandomProductFromHomePage();
             singleProductPage.setRandomProductQuantity(1, 5);
