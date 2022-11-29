@@ -8,12 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import start.Pages;
 import utils.Helpers;
-
 import java.math.BigDecimal;
-
-import static org.assertj.core.api.Assertions.offset;
-import static org.assertj.core.api.Assertions.withPrecision;
-
 public class CartTests extends Pages {
     private static final Logger logger = LoggerFactory.getLogger(CartTests.class);
 

@@ -21,7 +21,6 @@ public class Cart {
         return totalOrderCost;
     }
 
-//    private double totalOrderCost;
 private BigDecimal totalOrderCost;
     public Cart() {
         this.products = new ArrayList<>();

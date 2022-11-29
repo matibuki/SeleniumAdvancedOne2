@@ -10,9 +10,4 @@ public class Helpers {
         Date now = new Date();
         return sdf.format(now);
     }
-
-//    public static String roundingDown(Double a) {
-//        DecimalFormat df = new DecimalFormat("0.00");
-//        return df.format(a);
-//    }
 }

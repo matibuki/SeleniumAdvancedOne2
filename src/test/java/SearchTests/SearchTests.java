@@ -5,8 +5,6 @@ import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import start.Pages;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 public class SearchTests extends Pages {
 
     @RepeatedTest(10)

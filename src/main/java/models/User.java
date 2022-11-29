@@ -46,7 +46,6 @@ public class User {
 
     private User() {
     }
-
     public static UserBuilder builder() {
         return new UserBuilder();
     }
