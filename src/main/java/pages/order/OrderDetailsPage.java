@@ -21,7 +21,8 @@ public class OrderDetailsPage extends BasePage {
 
     @FindBy(xpath = "//*[@id=\"order-products\"]/tfoot/tr[position()=last()]/td[2]")
     private WebElement orderTotalCost;
-
+    @FindBy(css = ".line-products > td:last-child")
+    private WebElement orderSubTotalCost;
 
     @FindBy(xpath = "//*[@id='delivery-address']/address")
     private WebElement orderDeliveryAddress;
@@ -35,9 +36,8 @@ public class OrderDetailsPage extends BasePage {
     public String getOrderDate() {
         return orderDate.getText();
     }
-
     public BigDecimal getOrderTotalCost() {
-        return BigDecimal.valueOf(getPrice(orderTotalCost));
+        return BigDecimal.valueOf(getPrice(orderSubTotalCost));
     }
 
     public String getOrderDeliveryAddress() {

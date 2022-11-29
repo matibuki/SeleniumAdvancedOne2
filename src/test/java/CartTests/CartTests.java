@@ -61,8 +61,7 @@ public class CartTests extends Pages {
         BigDecimal totalOrderValue = cartPage.getTotalValueInCart();
         cartPage.goToCheckout();
 
-//        checkoutPage.deleteBillingAddressIfItExists();
-        checkoutPage.setNewBillingAddress();
+        checkoutPage.addNewBillingAddress();
         checkoutPage.fillAddress(UserFactory.getAlreadyRegisteredUser());
         checkoutPage.chooseRandomShippingMethod();
         checkoutPage.payByCheck();

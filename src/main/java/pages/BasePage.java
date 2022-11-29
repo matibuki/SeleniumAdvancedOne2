@@ -18,6 +18,7 @@ import utils.UrlProvider;
 import java.math.BigDecimal;
 import java.time.Duration;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Random;
 
 public class BasePage {
@@ -62,6 +63,14 @@ public class BasePage {
 
     public void waitForElements(List<WebElement> elements) {
         wait.until(ExpectedConditions.visibilityOfAllElements(elements));
+    }
+
+    public static boolean isElementDisplayed(WebElement webElement) {
+        try {
+            return webElement.isDisplayed();
+        } catch (NoSuchElementException error) {
+            return false;
+        }
     }
 
     public double getPrice(WebElement element) {
