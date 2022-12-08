@@ -1,12 +1,10 @@
-package ProductsTests;
+package productsTests;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import start.Pages;
-
-import java.math.BigDecimal;
+import base.Pages;
 
 public class FiltersTest extends Pages {
     private static final Logger logger = LoggerFactory.getLogger(FiltersTest.class);
@@ -23,8 +21,8 @@ public class FiltersTest extends Pages {
         filterPage.setMinimumPrice(priceRangeMin);
         filterPage.setMaximumPrice(priceRangeMax);
 
-        softly.assertThat(productsPage.getProducts().size()).isGreaterThan(0);
-        logger.info("Number of products found: " + productsPage.getProducts().size());
+        softly.assertThat(productsPage.productsCountOnPage()).isGreaterThan(0);
+        logger.info("Number of products found: " + productsPage.productsCountOnPage());
 
         for (int i = 0; i < productsPage.getProducts().size(); i++) {
             logger.info("Product price: " + productsPage.getProductPrice(i));

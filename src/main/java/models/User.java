@@ -1,5 +1,7 @@
 package models;
 
+import factory.UserFactory;
+
 public class User {
     private String firstName;
     private String lastName;
@@ -40,8 +42,19 @@ public class User {
     public String getCity() {
         return city;
     }
+
     public String getCountry() {
         return country;
+    }
+
+    public String getAddress() {
+        return firstName + " " +
+                lastName + "\n" +
+                streetName + "\n" +
+                zipCode + " " +
+                city + "\n" +
+                country;
+
     }
 
     private User() {

@@ -18,6 +18,6 @@ public class AccountPage extends BasePage {
     private WebElement orderHistory;
 
     public void openOrderHistory() {
-        clickElement(orderHistory);
+        click(orderHistory);
     }
 }

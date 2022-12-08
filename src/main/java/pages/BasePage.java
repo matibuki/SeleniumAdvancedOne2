@@ -15,7 +15,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import utils.UrlProvider;
 
-import java.math.BigDecimal;
 import java.time.Duration;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -39,8 +38,9 @@ public class BasePage {
         this.actions = new Actions(driver);
     }
 
-    public void clickElement (WebElement element) {
+    public void click(WebElement element) {
         waitForElement(element);
+        logger.info("Clicking on: " + element.getText());
         element.click();
     }
     public Random random = new Random();

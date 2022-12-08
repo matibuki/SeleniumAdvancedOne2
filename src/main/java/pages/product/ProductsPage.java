@@ -8,7 +8,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pages.BasePage;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 public class ProductsPage extends BasePage {
@@ -58,6 +57,9 @@ public class ProductsPage extends BasePage {
     public List<WebElement> getProducts() {
         return products;
     }
+    public int productsCountOnPage() {
+        return products.size();
+    }
 
     public int productsCountInSubtitle() {
         return Integer.parseInt(totalProductsNumber.getText().replaceAll("[^0-9]", ""));
@@ -74,9 +76,10 @@ public class ProductsPage extends BasePage {
         return availableProducts.size();
     }
 
-    String searchResult;
 
-    public String findElementInList(String searchResultElement) {
+
+    public String findProduct(String searchResultElement) {
+        String searchResult = null;
         for (WebElement element : availableProducts) {
             if (element.getText().equals(searchResultElement)) {
                 searchResult = searchResultElement;

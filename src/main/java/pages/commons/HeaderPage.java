@@ -51,7 +51,7 @@ public class HeaderPage extends BasePage {
     }
 
     public void clickSearch() {
-        searchCatalogIcon.click();
+        click(searchCatalogIcon);
     }
 
     public void searchForDefinedProduct() {
@@ -72,6 +72,14 @@ public class HeaderPage extends BasePage {
         return categories;
     }
 
+    public int numberOfCategories() {
+        return categories.size();
+    }
+
+    public void openCategory(int i) {
+        categories.get(i).click();
+    }
+
     public String getCategoryName(int i) {
         return categories.get(i).getText();
     }
@@ -80,13 +88,11 @@ public class HeaderPage extends BasePage {
         waitForElements(categories);
         for (WebElement category : categories) {
             if (category.getText().equals(name)) {
-                logger.info("Category chosen= " + category.getText());
-                category.click();
-            }
-            else {
-                logger.info("Category not found");
+                click(category);
+                return;
             }
         }
+        logger.info("Category not found");
     }
 
     public String getLogoutBtn() {

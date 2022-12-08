@@ -1,4 +1,4 @@
-package CartTests;
+package cartTests;
 
 import factory.UserFactory;
 import models.Cart;
@@ -6,7 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import start.Pages;
+import base.Pages;
 import utils.Helpers;
 import java.math.BigDecimal;
 public class CartTests extends Pages {
@@ -67,12 +67,7 @@ public class CartTests extends Pages {
         accountPage.openOrderHistory();
         orderHistoryPage.openOrderByNumber(orderNumber);
 
-        String userAddress = UserFactory.getAlreadyRegisteredUser().getFirstName() + " " +
-                UserFactory.getAlreadyRegisteredUser().getLastName() + "\n" +
-                UserFactory.getAlreadyRegisteredUser().getStreetName() + "\n" +
-                UserFactory.getAlreadyRegisteredUser().getZipCode() + " " +
-                UserFactory.getAlreadyRegisteredUser().getCity() + "\n" +
-                UserFactory.getAlreadyRegisteredUser().getCountry();
+        String userAddress = UserFactory.getAlreadyRegisteredUser().getAddress();
 
         softly.assertThat(orderDetailsPage.getOrderDate()).isEqualTo(Helpers.todayDate());
         softly.assertThat(orderDetailsPage.getOrderTotalCost()).isEqualTo(totalOrderValue);

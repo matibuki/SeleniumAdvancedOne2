@@ -4,7 +4,7 @@ import factory.UserFactory;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import utils.UrlProvider;
-import start.Pages;
+import base.Pages;
 
 
 public class RegisterUserTest extends Pages {

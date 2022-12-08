@@ -1,4 +1,4 @@
-package start;
+package base;
 
 import configuration.factory.BrowserFactory;
 import configuration.factory.PropertyStore;

@@ -1,10 +1,10 @@
-package ProductsTests;
+package productsTests;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import start.Pages;
+import base.Pages;
 
 public class CategoriesTests extends Pages {
     private static Logger logger = LoggerFactory.getLogger(CategoriesTests.class);
@@ -15,8 +15,8 @@ public class CategoriesTests extends Pages {
     public void productsInCategoriesTest() {
         softly.assertThat(headerPage.getCategories()).isNotEmpty();
 
-        for (int i = 0; i < headerPage.getCategories().size(); i++) {
-            headerPage.getCategories().get(i).click();
+        for (int i = 0; i < headerPage.numberOfCategories(); i++) {
+            headerPage.openCategory(i);
             logger.info("Category entered: " + headerPage.getCategoryName(i));
 
             softly.assertThat(headerPage.getCategoryName(i)).isEqualTo(productsPage.getCategoryHeader().getText());

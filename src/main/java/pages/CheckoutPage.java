@@ -55,7 +55,7 @@ public class CheckoutPage extends BasePage {
     private WebElement placeOrderBtn;
 
     public void setNewBillingAddress() {
-        clickElement(diffAddressLink);
+        click(diffAddressLink);
     }
 
     public void fillAddress(User user) {
@@ -85,7 +85,7 @@ public class CheckoutPage extends BasePage {
     }
 
     public void placeOrder() {
-        clickElement(placeOrderBtn);
+        click(placeOrderBtn);
     }
 
     public void addNewBillingAddress() {
